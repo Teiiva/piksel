@@ -1,0 +1,228 @@
+/* ============================================================
+   Feuille de style commune aux pages légales.
+   Volontairement séparée d'index.html : ces pages sont sobres,
+   sans animation ni interaction, et n'ont besoin que d'une
+   typographie lisible et de l'identité visuelle du site.
+   ============================================================ */
+
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/inter-tight-latin-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/inter-tight-latin-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter Tight';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/inter-tight-latin-700.woff2') format('woff2');
+}
+
+:root {
+  --bg: #fff;
+  --txt: #1d1d1f;
+  --txt-dim: #6e6e73;
+  --accent: #0071e3;
+  --line: rgba(28, 34, 54, .14);
+  --card: rgba(0, 0, 0, .025);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000;
+    --txt: #f5f5f7;
+    --txt-dim: #86868b;
+    --accent: #2997ff;
+    --line: rgba(255, 255, 255, .16);
+    --card: rgba(255, 255, 255, .05);
+    color-scheme: dark;
+  }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  letter-spacing: -.012em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* halo diffus repris de la page d'accueil */
+body::before {
+  content: '';
+  position: fixed;
+  inset: -15%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 40% at 12% 4%, rgba(0, 113, 227, .14), transparent 62%),
+    radial-gradient(34% 36% at 88% 92%, rgba(52, 199, 190, .10), transparent 62%);
+  filter: blur(26px);
+}
+
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+/* ----- en-tête ----- */
+.top {
+  padding: 34px 0;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 56px;
+}
+.top .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.06rem;
+  color: var(--txt);
+  text-decoration: none;
+}
+.brand svg { width: 26px; height: 26px; flex: none; }
+.back {
+  font-size: .9rem;
+  color: var(--txt-dim);
+  text-decoration: none;
+}
+.back:hover { color: var(--accent); }
+
+/* ----- contenu ----- */
+main { padding-bottom: 80px; }
+
+h1 {
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -.03em;
+  line-height: 1.12;
+  margin-bottom: 10px;
+}
+.maj {
+  font-size: .86rem;
+  color: var(--txt-dim);
+  margin-bottom: 48px;
+}
+h2 {
+  font-size: 1.32rem;
+  font-weight: 600;
+  letter-spacing: -.02em;
+  margin: 44px 0 14px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+h2:first-of-type { border-top: 0; padding-top: 0; }
+h3 {
+  font-size: 1.04rem;
+  font-weight: 600;
+  margin: 26px 0 8px;
+}
+p { margin-bottom: 15px; text-wrap: pretty; }
+ul, ol { margin: 0 0 15px 22px; }
+li { margin-bottom: 7px; }
+strong { font-weight: 600; }
+a { color: var(--accent); }
+
+dl {
+  margin-bottom: 18px;
+  display: grid;
+  grid-template-columns: minmax(140px, auto) 1fr;
+  gap: 9px 24px;
+}
+dt { color: var(--txt-dim); }
+dd { margin: 0; }
+@media (max-width: 560px) {
+  dl { grid-template-columns: 1fr; gap: 2px; }
+  dd { margin-bottom: 12px; }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: .94rem;
+}
+th, td {
+  text-align: left;
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+th { color: var(--txt-dim); font-weight: 600; }
+
+/* Encadré signalant une information que Teiva doit compléter
+   ou faire valider. Volontairement très visible. */
+.todo {
+  background: rgba(255, 176, 32, .12);
+  border: 1px solid rgba(255, 176, 32, .45);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  font-size: .93rem;
+}
+.todo strong { color: #a86400; }
+@media (prefers-color-scheme: dark) {
+  .todo strong { color: #ffc65c; }
+}
+
+/* champ à remplir, inséré dans le texte */
+.champ {
+  background: rgba(255, 176, 32, .22);
+  border-radius: 5px;
+  padding: 1px 7px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.note {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin: 22px 0;
+  font-size: .93rem;
+  color: var(--txt-dim);
+}
+
+/* ----- pied de page ----- */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 30px 0 46px;
+  font-size: .86rem;
+  color: var(--txt-dim);
+}
+footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  align-items: center;
+  justify-content: space-between;
+}
+footer a { color: var(--txt-dim); text-decoration: none; }
+footer a:hover { color: var(--accent); }
+footer nav { display: flex; flex-wrap: wrap; gap: 18px; }

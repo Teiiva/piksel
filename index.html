@@ -1,0 +1,3486 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Piksel — Création de site internet pour entreprises locales | Teiva Mettelet</title>
+  <meta name="description" content="Création de sites vitrines rapides et modernes pour artisans, commerçants et TPE. Maquette offerte, livraison en quelques jours, à partir de 250 €. Par Teiva Mettelet, développeur web freelance." />
+
+  <!-- Adresse de référence du site. Google voit la même page sur
+       piksel-web.fr et sur piksel-aj3.pages.dev (conservé pour les
+       préversions) : sans cette balise, il les traiterait comme du
+       contenu dupliqué et n'en indexerait qu'une, choisie au hasard. -->
+  <link rel="canonical" href="https://piksel-web.fr/" />
+
+  <!-- Aperçu affiché quand le lien est partagé par SMS, WhatsApp,
+       LinkedIn ou email. Sans og:image, l'aperçu sort sans visuel. -->
+  <meta property="og:title" content="Piksel — Création de site internet pour entreprises locales" />
+  <meta property="og:description" content="Sites vitrines rapides et modernes pour artisans, commerçants et TPE. Maquette offerte, à partir de 250 €." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://piksel-web.fr/" />
+  <meta property="og:site_name" content="Piksel" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:image" content="https://piksel-web.fr/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Piksel — Teiva Mettelet, développeur web freelance" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://piksel-web.fr/og.jpg" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+  <meta property="og:url" content="https://piksel-web.fr/" />
+  <meta property="og:image" content="https://piksel-web.fr/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d1d1f'/%3E%3Crect x='7' y='7' width='8' height='8' rx='1' fill='%230071e3'/%3E%3Crect x='17' y='7' width='8' height='8' rx='1' fill='%23fff' opacity='.92'/%3E%3Crect x='7' y='17' width='8' height='8' rx='1' fill='%23fff' opacity='.4'/%3E%3Crect x='17' y='17' width='8' height='8' rx='1' fill='%230071e3' opacity='.55'/%3E%3C/svg%3E" />
+
+  <!-- Police hébergée sur ce serveur plutôt que chez Google Fonts.
+       Charger la police depuis fonts.googleapis.com transmettait l'adresse
+       IP de chaque visiteur à Google sans son consentement — un point que
+       la CNIL surveille et qui a déjà valu une condamnation en Allemagne.
+       Bénéfice annexe : deux connexions externes en moins au chargement. -->
+  <link rel="preload" href="fonts/inter-tight-latin-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/inter-tight-latin-700.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="canonical" href="https://piksel-web.fr/" />
+
+
+  <!-- Captcha Cloudflare Turnstile.
+       Rendu « explicite » plutôt qu'automatique : le site a son propre
+       bouton clair/sombre, alors que le mode `auto` du widget suivrait le
+       réglage du système. On le pilote donc depuis notre JS.
+       Ce callback est défini AVANT le chargement de l'API : selon l'ordre
+       d'exécution, c'est soit lui, soit le script principal, qui déclenche
+       le rendu — les deux cas sont couverts. -->
+  <script>
+    window.pikselTurnstile = () => window.piksel && window.piksel.renderCaptcha();
+  </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=pikselTurnstile"
+          async defer></script>
+
+  <!-- ============================================================
+       DONNÉES STRUCTURÉES (JSON-LD)
+       Décrit l'activité dans un format que Google lit directement, au
+       lieu de la deviner depuis le texte. C'est ce qui permet
+       d'apparaître comme prestataire local plutôt que comme simple page.
+
+       À AJUSTER : `areaServed` vaut « France » par défaut. Remplace-le
+       par ta ville et les communes alentour — c'est le champ qui pèse
+       le plus pour ressortir sur « création site internet [ville] ».
+       ============================================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://piksel-web.fr/#business",
+        "name": "Piksel",
+        "url": "https://piksel-web.fr/",
+        "image": "https://piksel-web.fr/og.jpg",
+        "logo": "https://piksel-web.fr/piksel-logo.svg",
+        "description": "Création de sites vitrines rapides et modernes pour les artisans, commerçants et petites entreprises. Maquette offerte avant tout engagement.",
+        "email": "piksel.website@gmail.com",
+        "telephone": "+33649207366",
+        "priceRange": "250 € - 650 €",
+        "currenciesAccepted": "EUR",
+        "areaServed": { "@type": "Country", "name": "France" },
+        "founder": { "@id": "https://piksel-web.fr/#teiva" },
+        "knowsLanguage": "fr-FR",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Création de sites vitrines",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "Lite — page unique",
+              "description": "Une page unique, élégante et complète, avec formulaire de contact et référencement Google local.",
+              "price": "250",
+              "priceCurrency": "EUR"
+            },
+            {
+              "@type": "Offer",
+              "name": "Basic — site multipage",
+              "description": "Jusqu'à 5 pages, Google Maps et horaires, formation à la mise à jour.",
+              "price": "500",
+              "priceCurrency": "EUR"
+            },
+            {
+              "@type": "Offer",
+              "name": "Full — sur mesure",
+              "description": "Nombre de pages illimité, design conçu avec vous, retouches illimitées.",
+              "price": "650",
+              "priceCurrency": "EUR"
+            },
+            {
+              "@type": "Offer",
+              "name": "Maintenance & évolutions",
+              "description": "Mises à jour, sauvegardes et suivi des performances, sans engagement.",
+              "price": "15",
+              "priceCurrency": "EUR"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://piksel-web.fr/#teiva",
+        "name": "Teiva Mettelet",
+        "jobTitle": "Développeur web freelance",
+        "image": "https://piksel-web.fr/teiva.webp",
+        "url": "https://piksel-web.fr/",
+        "worksFor": { "@id": "https://piksel-web.fr/#business" },
+        "knowsAbout": ["Développement web", "HTML", "CSS", "JavaScript", "Référencement local", "Accessibilité web"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://piksel-web.fr/#site",
+        "url": "https://piksel-web.fr/",
+        "name": "Piksel",
+        "inLanguage": "fr-FR",
+        "publisher": { "@id": "https://piksel-web.fr/#business" }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ----- POLICE LOCALE -----
+       `font-display: swap` affiche immédiatement une police système, puis
+       bascule : le texte reste lisible pendant le chargement.
+       `unicode-range` évite de télécharger le jeu étendu à ceux qui n'en
+       ont pas besoin — le navigateur ne prend latin-ext que s'il croise
+       un caractère qui l'exige. */
+    @font-face {
+      font-family: 'Inter Tight';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('fonts/inter-tight-latin-400.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+    }
+    @font-face {
+      font-family: 'Inter Tight';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('fonts/inter-tight-latin-500.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+    }
+    @font-face {
+      font-family: 'Inter Tight';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('fonts/inter-tight-latin-600.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+    }
+    @font-face {
+      font-family: 'Inter Tight';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('fonts/inter-tight-latin-700.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+    }
+    @font-face {
+      font-family: 'Inter Tight';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('fonts/inter-tight-latin-ext-400.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    @font-face {
+      font-family: 'Inter Tight';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('fonts/inter-tight-latin-ext-700.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+
+    /* ============================================================
+       PIKSEL — style Apple, verre subtil, dynamique.
+       Reprend les couleurs, la typo et la rigueur de la version
+       « index.html », tout en conservant la richesse interactive
+       de la version glassmorphisme (loader, machine à écrire,
+       curseur, canvas, tilt 3D, carrousels).
+       ============================================================ */
+
+    /* ----- VARIABLES APPLE + GLASS ----- */
+    :root {
+      --bg: #ffffff;
+      --txt: #1d1d1f;
+      --txt-dim: #6e6e73;
+      --line: rgba(28, 34, 54, .14);
+      --accent: #0071e3;
+      --accent-hi: #0077ed;
+      --ok: #1d9e5e;
+
+      /* verre */
+      --veil: rgba(255, 255, 255, .30);
+      --veil-alt: rgba(255, 255, 255, .62);
+      --card: rgba(255, 255, 255, .66);
+      --card-hi: rgba(255, 255, 255, .88);
+      --card-line: rgba(255, 255, 255, .85);
+      --card-inner: inset 0 1px 0 rgba(255, 255, 255, .95);
+      --card-shadow: 0 1px 2px rgba(22, 34, 66, .04), 0 14px 34px rgba(22, 34, 66, .09);
+      --card-shadow-hi: 0 2px 4px rgba(22, 34, 66, .05), 0 22px 50px rgba(22, 34, 66, .14);
+      --blur: blur(22px) saturate(180%);
+      /* La capsule de nav flotte sur du blanc pur : avec --card/--blur le
+         verre y devenait quasi invisible. Elle a donc son propre verre,
+         plus dense et plus sature. En sombre il etait deja juste : les
+         valeurs y retombent sur --card / --blur. */
+      --nav-glass: rgba(255, 255, 255, .58);
+      --nav-glass-hi: rgba(255, 255, 255, .72);
+      --nav-blur: blur(34px) saturate(210%) brightness(1.05);
+      --nav-shadow: 0 1px 2px rgba(22, 34, 66, .06), 0 16px 40px rgba(22, 34, 66, .13);
+      --nav-shadow-hi: 0 2px 5px rgba(22, 34, 66, .08), 0 24px 56px rgba(22, 34, 66, .18);
+      --nav-line: rgba(28, 34, 54, .18);
+
+      --radius: 18px;
+      --radius-lg: 28px;
+      --radius-s: 12px;
+      --pill: 980px;
+      --max: 1024px;
+      --read: 700px;
+      --ease: cubic-bezier(.28, .11, .32, 1);
+    }
+
+    /* .alt est défini plus bas, avec les règles de section. */
+
+    html[data-theme="dark"] {
+      --bg: #000000;
+      --txt: #f5f5f7;
+      --txt-dim: #86868b;
+      --line: rgba(255, 255, 255, .16);
+      --accent: #2997ff;
+      --accent-hi: #47a5ff;
+      --ok: #30d158;
+      --veil: rgba(0, 0, 0, .32);
+      --veil-alt: rgba(255, 255, 255, .055);
+      --card: rgba(255, 255, 255, .075);
+      --card-hi: rgba(255, 255, 255, .115);
+      --card-line: rgba(255, 255, 255, .13);
+      --card-inner: inset 0 1px 0 rgba(255, 255, 255, .09);
+      --card-shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 14px 34px rgba(0, 0, 0, .45);
+      --card-shadow-hi: 0 2px 4px rgba(0, 0, 0, .35), 0 22px 50px rgba(0, 0, 0, .55);
+      /* le verre sombre etait deja au bon niveau : on ne touche a rien */
+      --nav-glass: var(--card);
+      --nav-glass-hi: var(--card-hi);
+      --nav-blur: var(--blur);
+      --nav-shadow: var(--card-shadow);
+      --nav-shadow-hi: var(--card-shadow-hi);
+      --nav-line: var(--line);
+    }
+
+    /* ----- RESET & FOND ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      overflow-x: clip;
+      background: var(--bg);
+      transition: background .4s var(--ease);
+    }
+
+    body {
+      background: transparent;
+      color: var(--txt);
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.47;
+      letter-spacing: -.012em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      position: relative;
+      transition: color .4s var(--ease);
+      min-height: 100vh;
+    }
+
+    /* nappe de couleur (fixe) */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: -15%;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(38% 40% at 14% 6%, rgba(0, 113, 227, .18), transparent 62%),
+        radial-gradient(34% 36% at 86% 14%, rgba(88, 86, 214, .13), transparent 62%),
+        radial-gradient(40% 42% at 78% 74%, rgba(52, 199, 190, .11), transparent 62%),
+        radial-gradient(34% 38% at 18% 86%, rgba(10, 132, 255, .10), transparent 62%);
+      filter: blur(26px);
+    }
+
+    html[data-theme="dark"] body::before {
+      opacity: .62;
+    }
+
+    /* grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .2;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+    }
+
+    /* ----- TYPOGRAPHIE ----- */
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-weight: 600;
+      line-height: 1.08;
+      letter-spacing: -.02em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    ::selection {
+      background: rgba(0, 113, 227, .22);
+    }
+    :focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+
+    /* ----- LOADER (apple‑like) ----- */
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 26px;
+      transition: opacity .7s var(--ease), visibility .7s;
+    }
+    #loader.done {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .load-lock {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .load-mark {
+      width: clamp(38px, 7vw, 54px);
+      height: clamp(38px, 7vw, 54px);
+      flex: none;
+      color: var(--txt);
+      opacity: 0;
+      transform: scale(.6) rotate(-25deg);
+      animation: markIn .9s var(--ease) .1s forwards;
+    }
+    @keyframes markIn {
+      to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+      }
+    }
+    .load-mark rect.p {
+      animation: blipx 2.4s ease-in-out infinite;
+    }
+    .load-mark rect.p:nth-of-type(2) {
+      animation-delay: .3s;
+    }
+    .load-mark rect.p:nth-of-type(3) {
+      animation-delay: .6s;
+    }
+    .load-mark rect.p:nth-of-type(4) {
+      animation-delay: .9s;
+    }
+    @keyframes blipx {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      45% {
+        opacity: .25;
+      }
+    }
+
+    .load-name {
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -.03em;
+      overflow: hidden;
+    }
+    .load-name span {
+      display: inline-block;
+      transform: translateY(110%);
+      animation: riseUp .85s var(--ease) forwards;
+    }
+    @keyframes riseUp {
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    .load-bar {
+      width: min(240px, 50vw);
+      height: 5px;
+      border-radius: 9px;
+      overflow: hidden;
+      background: var(--card);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--line);
+      box-shadow: var(--card-inner);
+    }
+    .load-bar i {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+      border-radius: 9px;
+      animation: fill 1.5s var(--ease) forwards;
+    }
+    @keyframes fill {
+      to {
+        width: 100%;
+      }
+    }
+
+    /* ----- CURSEUR -----
+       Plus d'element suiveur : le curseur systeme est simplement remplace par
+       une fleche dessinee en SVG. Zero JavaScript, zero latence, et il reste
+       un vrai curseur — pas un disque qui court apres le pointeur.
+
+       Chaque fleche est dessinee DEUX FOIS sur le meme trace :
+         1. dessous, un contour epais en bleu, joints arrondis
+         2. dessus, le meme trace rempli et contourne en blanc, plus fin
+       La difference des deux epaisseurs (3,6 - 1,6) / 2 laisse voir exactement
+       1 px de bleu. C'est ce qui donne un liseré fin ET des angles courbes,
+       sans avoir a decrire les arrondis dans le trace lui-meme.
+
+       Le couple `4 3` en fin de declaration est le point actif : la pointe. */
+    :root {
+      /* Taille reduite a 80 % : le viewBox reste 28 pour ne pas retoucher le
+         trace, seules width/height passent a 22 (28 x 0.8 = 22.4). Le point
+         actif suit la meme reduction : 4 3 -> 3 2. */
+      --cur: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 28 28'%3E%3Cg fill='none' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M4 3 4 22.2 8.9 17.6 11.9 24.2 15.2 22.7 12.3 16.4 18.9 16.1Z' stroke='%230071e3' stroke-width='3.6'/%3E%3Cpath d='M4 3 4 22.2 8.9 17.6 11.9 24.2 15.2 22.7 12.3 16.4 18.9 16.1Z' fill='%23ffffff' stroke='%23ffffff' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E") 3 2, auto;
+      /* survol : la meme fleche en negatif, bleue a liseré blanc */
+      --cur-link: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 28 28'%3E%3Cg fill='none' stroke-linejoin='round' stroke-linecap='round'%3E%3Cpath d='M4 3 4 22.2 8.9 17.6 11.9 24.2 15.2 22.7 12.3 16.4 18.9 16.1Z' stroke='%23ffffff' stroke-width='3.6'/%3E%3Cpath d='M4 3 4 22.2 8.9 17.6 11.9 24.2 15.2 22.7 12.3 16.4 18.9 16.1Z' fill='%230071e3' stroke='%230071e3' stroke-width='1.6'/%3E%3C/g%3E%3C/svg%3E") 3 2, pointer;
+    }
+    html {
+      cursor: var(--cur);
+
+      /* ----- BARRE DE DEFILEMENT -----
+         `color-scheme` aligne aussi les widgets natifs (menus, champs de
+         date) sur le theme courant. Le pouce reprend le gris discret du
+         texte secondaire, la piste reste transparente pour laisser passer
+         le fond anime de la page. */
+      color-scheme: light;
+      --sb-thumb: rgba(28, 34, 54, .28);
+      --sb-track: transparent;
+      scrollbar-width: thin;
+      scrollbar-color: var(--sb-thumb) var(--sb-track);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --sb-thumb: rgba(255, 255, 255, .26);
+    }
+    /* Un pouce trop pale devient invisible pour qui force le contraste. */
+    @media (prefers-contrast: more) {
+      html {
+        --sb-thumb: #000;
+      }
+      html[data-theme="dark"] {
+        --sb-thumb: #fff;
+      }
+    }
+    /* Repli pour les moteurs WebKit anterieurs a scrollbar-color
+       (Safari < 26.2). Les variables ci-dessus y cascadent telles quelles. */
+    @supports not (scrollbar-color: auto) {
+      html::-webkit-scrollbar {
+        width: 11px;
+        height: 11px;
+      }
+      html::-webkit-scrollbar-track {
+        background: var(--sb-track);
+      }
+      html::-webkit-scrollbar-thumb {
+        background: var(--sb-thumb);
+        border-radius: 99px;
+        border: 3px solid transparent;
+        background-clip: content-box;
+      }
+      html::-webkit-scrollbar-thumb:hover {
+        background: var(--accent);
+        background-clip: content-box;
+      }
+    }
+    a,
+    label,
+    summary,
+    [role="button"],
+    .card,
+    .proj,
+    .stat {
+      cursor: var(--cur-link);
+    }
+    /* la barre d'insertion reste la bonne indication dans un champ de saisie */
+    input,
+    textarea,
+    select {
+      cursor: text;
+    }
+    textarea {
+      cursor: auto;
+    }
+
+    /* barre de progression */
+    #progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: var(--accent);
+      z-index: 8000;
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      will-change: transform;
+    }
+
+    /* ----- NAV (capsule flottante) ----- */
+    header {
+      position: fixed;
+      top: 16px;
+      left: 0;
+      right: 0;
+      z-index: 800;
+      transition: top .45s var(--ease);
+    }
+    /* CORRECTIF : le flou est porte par .nav::before, jamais par .nav.
+       Un element avec backdrop-filter devient le bloc conteneur de ses
+       descendants en position:fixed. Le menu mobile (.links, enfant de .nav)
+       calait donc ses inset sur la capsule de 60px au lieu de l'ecran :
+       fond quasi inexistant, liens etales par-dessus la page. */
+    .nav {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 11px 11px 11px 22px;
+      border-radius: 99px;
+      background: none;
+      border: 1px solid transparent;
+    }
+    .nav::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      z-index: -1;
+      border-radius: 99px;
+      background: var(--nav-glass);
+      backdrop-filter: var(--nav-blur);
+      -webkit-backdrop-filter: var(--nav-blur);
+      border: 1px solid var(--nav-line);
+      box-shadow: var(--nav-shadow), var(--card-inner);
+      transition: box-shadow .45s var(--ease), background .45s var(--ease), opacity .35s var(--ease);
+    }
+    header.stuck .nav::before {
+      background: var(--nav-glass-hi);
+      box-shadow: var(--nav-shadow-hi), var(--card-inner);
+    }
+    /* le menu couvre tout l'ecran : la capsule se dissout dessous au lieu de
+       rester a moitie visible */
+    body.menu-open .nav::before {
+      opacity: 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.06rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo svg {
+      width: 26px;
+      height: 26px;
+      flex: none;
+    }
+    /* Clignotement en cascade des 4 carrés — partagé par le logo de la nav
+       et celui de la plaque du portrait, pour qu'ils battent à l'identique. */
+    .logo svg rect.p,
+    .ph-plate svg rect.p {
+      animation: blipx 3.2s ease-in-out infinite;
+    }
+    .logo svg rect.p:nth-of-type(2),
+    .ph-plate svg rect.p:nth-of-type(2) {
+      animation-delay: .35s;
+    }
+    .logo svg rect.p:nth-of-type(3),
+    .ph-plate svg rect.p:nth-of-type(3) {
+      animation-delay: .7s;
+    }
+    .logo svg rect.p:nth-of-type(4),
+    .ph-plate svg rect.p:nth-of-type(4) {
+      animation-delay: 1.05s;
+    }
+
+    .links {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+      position: relative;
+    }
+    .links a {
+      font-size: .86rem;
+      color: var(--txt-dim);
+      padding: 9px 15px;
+      border-radius: 99px;
+      transition: color .3s;
+      position: relative;
+      z-index: 1;
+    }
+    .links a:hover {
+      color: var(--txt);
+    }
+    .links a.on {
+      color: var(--txt);
+    }
+
+    /* ----- PASTILLE LIQUIDE -----
+       Un seul element physique glisse d'un lien a l'autre au lieu que chaque
+       lien allume puis eteigne son propre fond. Pendant le trajet il s'etire
+       dans l'axe du deplacement et s'aplatit legerement (scaleX > 1,
+       scaleY < 1), puis se retasse avec un ressort : c'est ce couple
+       etirement / retassement qui donne la sensation de matiere liquide.
+       Position et largeur sont pilotees en JS (voir movePill). */
+    .nav-pill {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      height: 34px;
+      width: 0;
+      margin-top: -17px;
+      border-radius: 99px;
+      background: var(--card-hi);
+      border: 1px solid var(--card-line);
+      box-shadow: 0 2px 10px rgba(20, 24, 60, .10), var(--card-inner);
+      backdrop-filter: blur(8px) saturate(160%);
+      -webkit-backdrop-filter: blur(8px) saturate(160%);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 0;
+      transform: translateX(0);
+      transform-origin: center;
+      will-change: transform, width;
+      transition:
+        transform .34s cubic-bezier(.34, .85, .3, 1),
+        width .34s cubic-bezier(.34, .85, .3, 1),
+        opacity .3s var(--ease);
+    }
+    html[data-theme="dark"] .nav-pill {
+      border-color: rgba(255, 255, 255, .14);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .35), var(--card-inner);
+    }
+    .nav-pill.show {
+      opacity: 1;
+    }
+    @media(prefers-reduced-motion:reduce) {
+      .nav-pill {
+        transition: opacity .2s linear;
+      }
+    }
+
+    /* Regroupe bouton de theme, CTA et burger. Cette regle remplace un
+       ancien attribut style="" : la CSP du site interdit les styles inline
+       pour couper la principale voie d'injection XSS. */
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .nav-cta {
+      font-size: .86rem;
+      font-weight: 500;
+      padding: 11px 22px;
+      border-radius: 99px;
+      color: #fff;
+      background: var(--accent);
+      box-shadow: 0 6px 20px rgba(0, 113, 227, .35), inset 0 1px 0 rgba(255, 255, 255, .35);
+      transition: transform .35s var(--ease), box-shadow .35s, background .35s;
+    }
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      background: var(--accent-hi);
+      box-shadow: 0 12px 30px rgba(0, 113, 227, .45), inset 0 1px 0 rgba(255, 255, 255, .35);
+    }
+
+    #themeBtn {
+      background: rgba(255, 255, 255, .4);
+      border: 1px solid var(--line);
+      color: var(--txt);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: var(--cur-link);
+      display: grid;
+      place-items: center;
+      font-size: .9rem;
+      transition: .35s var(--ease);
+      box-shadow: var(--card-inner);
+    }
+    html[data-theme="dark"] #themeBtn {
+      background: rgba(255, 255, 255, .07);
+    }
+    #themeBtn:hover {
+      transform: rotate(25deg) scale(1.06);
+    }
+
+    .menu-cta {
+      display: none;
+    }
+    #burger {
+      display: none;
+      background: none;
+      border: 0;
+      color: var(--txt);
+      cursor: var(--cur-link);
+      flex-direction: column;
+      gap: 5px;
+      padding: 9px;
+    }
+    #burger i {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--txt);
+      border-radius: 2px;
+      transition: .3s var(--ease);
+    }
+    #burger.x i:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    #burger.x i:nth-child(2) {
+      opacity: 0;
+    }
+    #burger.x i:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* ----- HERO (version glass) ----- */
+    #hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: none;
+      padding: 0;
+    }
+
+    /* halos statiques */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: .5;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .b1 {
+      width: 520px;
+      height: 520px;
+      background: rgba(0, 113, 227, .25);
+      top: -140px;
+      left: -110px;
+    }
+    .b2 {
+      width: 430px;
+      height: 430px;
+      background: rgba(10, 132, 255, .18);
+      bottom: -150px;
+      right: -70px;
+    }
+    .b3 {
+      width: 320px;
+      height: 320px;
+      background: rgba(88, 86, 214, .15);
+      top: 38%;
+      right: 24%;
+      opacity: .28;
+    }
+    html[data-theme="dark"] .blob {
+      opacity: .55;
+    }
+
+    .hero-in {
+      position: relative;
+      z-index: 2;
+      padding: 150px 0 90px;
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      gap: 40px;
+      align-items: end;
+    }
+    .hero-txt {
+      min-width: 0;
+    }
+
+    /* portrait */
+    .hero-photo {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      margin: 0;
+      isolation: isolate;
+    }
+    .hero-photo picture {
+      position: relative;
+      z-index: 2;
+      display: block;
+      width: 100%;
+      max-width: 440px;
+      margin-bottom: -38px;
+      filter: drop-shadow(0 26px 45px rgba(20, 24, 60, .26));
+      opacity: 0;
+      transform: translateY(28px) scale(.97);
+      animation: photoIn 1.1s var(--ease) .55s forwards;
+    }
+    html[data-theme="dark"] .hero-photo picture {
+      filter: drop-shadow(0 26px 45px rgba(0, 0, 0, .55));
+    }
+    @keyframes photoIn {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    .hero-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 78svh;
+      object-fit: contain;
+      object-position: bottom;
+      -webkit-mask-image: radial-gradient(170% 60% at 50% 124%, transparent 0 56%, #000 100%),
+        linear-gradient(to bottom, #000 58%, transparent 100%);
+      mask-image: radial-gradient(170% 60% at 50% 124%, transparent 0 56%, #000 100%),
+        linear-gradient(to bottom, #000 58%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-composite: intersect;
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-size: 100% 100%;
+      mask-size: 100% 100%;
+    }
+    @supports not (mask-composite: intersect) {
+      .hero-photo img {
+        -webkit-mask-image: linear-gradient(to bottom, #000 66%, transparent 98%);
+        mask-image: linear-gradient(to bottom, #000 66%, transparent 98%);
+      }
+    }
+
+    .ph-glow {
+      position: absolute;
+      z-index: 0;
+      width: 78%;
+      aspect-ratio: 1;
+      bottom: 7%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(0, 113, 227, .35), rgba(10, 132, 255, .15) 55%, transparent 72%);
+      filter: blur(46px);
+    }
+
+    .ph-disc {
+      position: absolute;
+      z-index: 1;
+      width: 80%;
+      max-width: 400px;
+      aspect-ratio: 1;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      pointer-events: none;
+      background: var(--card);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--line);
+      box-shadow: var(--card-shadow-hi), var(--card-inner);
+      -webkit-mask-image: linear-gradient(#000 62%, transparent 100%);
+      mask-image: linear-gradient(#000 62%, transparent 100%);
+    }
+
+    /* La plaque est ancrée en bas à droite de la colonne photo.
+       .hero-in étant une grille en `align-items: end`, ce bas de colonne
+       est exactement celui de .hero-txt : la plaque s'aligne donc d'elle-même
+       sur la rangée de boutons, sans valeur magique à maintenir. */
+    .ph-plate {
+      position: absolute;
+      z-index: 3;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 11px 17px 11px 13px;
+      border-radius: 99px;
+      background: var(--card-hi);
+      border: 1px solid var(--line);
+      box-shadow: var(--card-shadow), var(--card-inner);
+    }
+    .ph-plate svg {
+      width: 24px;
+      height: 24px;
+      flex: none;
+      color: var(--txt);
+    }
+    .ph-plate b {
+      display: block;
+      font-size: .88rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+    .ph-plate small {
+      display: block;
+      font-size: .74rem;
+      color: var(--txt-dim);
+      line-height: 1.25;
+    }
+
+    /* ----- STATUT DE DISPONIBILITE -----
+       Bloc editorial : un filet vertical et deux lignes. Ni pilule, ni
+       pastille pulsante. Le vert ne sert qu'ici, et il porte un sens
+       (disponible) plutot qu'une decoration — c'est la seule entorse
+       assumee a la regle du mono-accent. */
+    .avail {
+      position: relative;
+      padding-left: 15px;
+      margin-bottom: 28px;
+    }
+    .avail::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 4px;
+      bottom: 4px;
+      width: 2px;
+      border-radius: 2px;
+      background: var(--ok);
+    }
+    .avail b {
+      display: block;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -.01em;
+      line-height: 1.35;
+    }
+    .avail span {
+      display: block;
+      margin-top: 1px;
+      font-size: 15px;
+      line-height: 1.35;
+      color: var(--txt-dim);
+    }
+
+    h1.title {
+      font-size: clamp(2.0rem, 6vw, 4.5rem);
+      font-weight: 700;
+      letter-spacing: -.045em;
+      line-height: 1.06;
+    }
+    h1.title .line {
+      display: block;
+      overflow: hidden;
+    }
+    h1.title .line>span {
+      display: block;
+      transform: translateY(110%);
+      opacity: 0;
+      transition: transform .9s var(--ease), opacity .9s var(--ease);
+    }
+
+    .role {
+      margin-top: 24px;
+      font-size: clamp(1.05rem, 3vw, 1.7rem);
+      font-weight: 500;
+      color: var(--txt-dim);
+      min-height: 1.6em;
+    }
+    .role .type {
+      color: var(--txt);
+    }
+    .role .cur {
+      display: inline-block;
+      width: 3px;
+      height: 1em;
+      border-radius: 2px;
+      background: var(--accent);
+      vertical-align: -.12em;
+      animation: blink 1s steps(2) infinite;
+    }
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .pitch {
+      max-width: 560px;
+      margin-top: 26px;
+      color: var(--txt-dim);
+      font-size: 1.03rem;
+      line-height: 1.4;
+    }
+
+    .btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 99px;
+      font-size: .95rem;
+      font-weight: 500;
+      transition: all .38s var(--ease);
+      border: 1px solid transparent;
+      cursor: var(--cur-link);
+    }
+    .btn-p {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(0, 113, 227, .35), inset 0 1px 0 rgba(255, 255, 255, .35);
+    }
+    .btn-p:hover {
+      transform: translateY(-3px) scale(1.015);
+      background: var(--accent-hi);
+      box-shadow: 0 18px 44px rgba(0, 113, 227, .45), inset 0 1px 0 rgba(255, 255, 255, .35);
+    }
+    .btn-s {
+      background: var(--card);
+      border-color: var(--line);
+      color: var(--txt);
+      box-shadow: var(--card-shadow), var(--card-inner);
+    }
+    .btn-s:hover {
+      transform: translateY(-3px);
+      background: var(--card-hi);
+      box-shadow: var(--card-shadow-hi), var(--card-inner);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 34px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      font-size: .7rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--txt-dim);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .scroll-hint span {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(var(--accent), transparent);
+      animation: drop 2s infinite;
+    }
+    @keyframes drop {
+      0% {
+        transform: scaleY(0);
+        transform-origin: top;
+      }
+      50% {
+        transform: scaleY(1);
+        transform-origin: top;
+      }
+      51% {
+        transform-origin: bottom;
+      }
+      100% {
+        transform: scaleY(0);
+        transform-origin: bottom;
+      }
+    }
+
+    /* ----- SECTIONS ----- */
+    section {
+      padding: 130px 0;
+      position: relative;
+      background: var(--veil);
+    }
+    /* Les sections alternent entre --veil et --veil-alt. Un aplat franc
+       créait une ligne nette en plein milieu de l'espace vide qui suit les
+       carrousels, si bien que les points de pagination semblaient flotter
+       entre deux sections. La section alternée part donc de --veil à ses
+       deux extrémités — exactement la teinte de ses voisines, donc aucune
+       couture — puis glisse vers --veil-alt sur 90 px. */
+    .alt {
+      background: linear-gradient(to bottom,
+          var(--veil) 0,
+          var(--veil-alt) 90px,
+          var(--veil-alt) calc(100% - 90px),
+          var(--veil) 100%);
+      --card: var(--card-hi);
+    }
+
+    .head {
+      max-width: var(--read);
+      margin: 0 auto 64px;
+      text-align: center;
+    }
+    .eyebrow {
+      font-size: .74rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      font-weight: 600;
+      justify-content: center;
+    }
+    .eyebrow::before {
+      content: '';
+      width: 34px;
+      height: 1px;
+      background: var(--accent);
+    }
+    .head h2 {
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      letter-spacing: -.022em;
+      line-height: 1.07;
+      text-wrap: balance;
+    }
+    .head p {
+      margin-top: 18px;
+      font-size: 19px;
+      color: var(--txt-dim);
+      line-height: 1.45;
+      text-wrap: pretty;
+    }
+
+    .rv {
+      opacity: 0;
+      transform: translateY(38px);
+      transition: opacity .95s var(--ease), transform .95s var(--ease);
+    }
+    .rv.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ----- ABOUT ----- */
+    .about {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 60px;
+      align-items: start;
+    }
+    @media(max-width:880px) {
+      .about {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+    .about p {
+      color: var(--txt-dim);
+      margin-bottom: 18px;
+      font-size: 19px;
+      line-height: 1.5;
+    }
+    .about strong {
+      color: var(--txt);
+      font-weight: 600;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--card-shadow), var(--card-inner);
+      border-radius: var(--radius);
+      padding: 26px 22px;
+      text-align: center;
+      transition: background .3s var(--ease), box-shadow .3s var(--ease);
+    }
+    .stat:hover {
+      background: var(--card-hi);
+      box-shadow: var(--card-shadow-hi), var(--card-inner);
+    }
+    .stat b {
+      display: block;
+      font-size: 2.3rem;
+      font-weight: 700;
+      letter-spacing: -.03em;
+      line-height: 1.05;
+    }
+    .stat span {
+      display: block;
+      margin-top: 6px;
+      font-size: .82rem;
+      line-height: 1.35;
+      color: var(--txt-dim);
+    }
+
+    /* bloc de specs (CV technique) */
+    .spec {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 56px;
+      margin-top: 64px;
+      border-top: 1px solid var(--line);
+    }
+    /* Sur téléphone ce bloc ne s'empile pas : il devient un carrousel
+       (voir le bloc 860 px plus bas), comme Services et Réalisations. */
+    .spec-col {
+      padding-top: 26px;
+    }
+    .spec-col h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--txt-dim);
+      letter-spacing: .01em;
+      margin-bottom: 6px;
+    }
+    .spec-col ul {
+      list-style: none;
+    }
+    .spec-col li {
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 17px;
+    }
+    .spec-col li:last-child {
+      border-bottom: 0;
+    }
+
+    /* ----- SERVICES ----- */
+    .svc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr));
+      gap: 16px;
+    }
+    .svc2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .svc2 .card {
+      display: flex;
+      flex-direction: column;
+    }
+    @media(max-width:880px) {
+      .svc2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--card-shadow), var(--card-inner);
+      border-radius: var(--radius-lg);
+      padding: 38px 32px 34px;
+      position: relative;
+      transition: transform .4s var(--ease), background .4s var(--ease), box-shadow .4s var(--ease);
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      background: var(--card-hi);
+      box-shadow: var(--card-shadow-hi), var(--card-inner);
+    }
+    .card .ico {
+      width: 54px;
+      height: 54px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      color: var(--accent);
+      background: rgba(255, 255, 255, .55);
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 14px rgba(20, 24, 60, .10), var(--card-inner);
+    }
+    html[data-theme="dark"] .card .ico {
+      background: rgba(255, 255, 255, .08);
+    }
+    .card .ico svg {
+      width: 26px;
+      height: 26px;
+      display: block;
+    }
+    .card h3 {
+      font-size: 26px;
+      letter-spacing: -.02em;
+      margin-bottom: 10px;
+    }
+    .card>p {
+      font-size: 16px;
+      line-height: 1.45;
+      color: var(--txt-dim);
+      text-wrap: pretty;
+    }
+    .card .price {
+      margin-top: 26px;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -.03em;
+      line-height: 1.1;
+    }
+    .card .price small {
+      display: block;
+      margin-top: 4px;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--txt-dim);
+      letter-spacing: -.005em;
+    }
+    .card ul {
+      list-style: none;
+      margin-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+    .card li {
+      padding: 12px 0 12px 26px;
+      border-bottom: 1px solid var(--line);
+      font-size: 15px;
+      line-height: 1.4;
+      color: var(--txt-dim);
+      position: relative;
+    }
+    .card li:last-child {
+      border-bottom: 0;
+    }
+    .card li::before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      top: 18px;
+      width: 11px;
+      height: 6px;
+      border-left: 1.7px solid var(--accent);
+      border-bottom: 1.7px solid var(--accent);
+      transform: rotate(-45deg);
+    }
+    .card.hot {
+      outline: 2px solid var(--accent);
+      outline-offset: -2px;
+    }
+    /* le badge occupe la meme bande verticale que l'icone (haut du padding,
+       hauteur de l'icone) et s'y centre : les deux reposent sur le meme axe */
+    .tag {
+      position: absolute;
+      top: 38px;
+      right: 32px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: -.005em;
+    }
+
+    /* ----- PROJETS ----- */
+    .projs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(288px, 100%), 1fr));
+      gap: 16px;
+    }
+    .proj {
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--card-shadow), var(--card-inner);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .4s var(--ease), background .4s var(--ease), box-shadow .4s var(--ease);
+      transform-style: preserve-3d;
+    }
+    .proj:hover {
+      transform: translateY(-3px);
+      background: var(--card-hi);
+      box-shadow: var(--card-shadow-hi), var(--card-inner);
+    }
+    .thumb {
+      aspect-ratio: 16/10;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      font-size: 32px;
+      font-weight: 600;
+      color: #fff;
+      margin: 9px 9px 0;
+      border-radius: 20px;
+    }
+    .thumb img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform .6s var(--ease);
+    }
+    .proj:hover .thumb img {
+      transform: scale(1.04);
+    }
+
+    /* ---- tuile « à venir » : même gabarit, traitement en pointillés ---- */
+    .proj-soon {
+      border-style: dashed;
+      background: transparent;
+      box-shadow: none;
+    }
+    .proj-soon:hover {
+      background: var(--card);
+      border-style: solid;
+      box-shadow: var(--card-shadow-hi), var(--card-inner);
+    }
+    .thumb-soon {
+      background:
+        radial-gradient(120% 120% at 50% 0%, rgba(0, 113, 227, .16), transparent 62%),
+        var(--card);
+      border: 1px dashed var(--line);
+      gap: 14px;
+      grid-auto-flow: row;
+    }
+    .thumb-soon svg {
+      width: 40px;
+      height: 40px;
+    }
+    /* Les carrés reprennent le clignotement du logo, mais en sourdine. */
+    .thumb-soon svg rect.p {
+      fill: var(--accent);
+      opacity: .38;
+      animation: blipx 3.2s ease-in-out infinite;
+    }
+    .thumb-soon svg rect.p:nth-of-type(2) {
+      animation-delay: .35s;
+    }
+    .thumb-soon svg rect.p:nth-of-type(3) {
+      animation-delay: .7s;
+    }
+    .thumb-soon svg rect.p:nth-of-type(4) {
+      animation-delay: 1.05s;
+    }
+    .soon-tag {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--txt-dim);
+    }
+    .proj-soon .proj-link {
+      color: var(--accent);
+    }
+    .proj-body {
+      padding: 30px 30px 32px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    /* En-tete de tuile : le titre et le badge d'offre partagent une ligne.
+       `flex-start` et non `center` — les titres passent souvent a deux lignes
+       dans une colonne de 288px, et un badge centre sur deux lignes flotte au
+       milieu de nulle part. Les 2px de marge recalent optiquement le badge sur
+       la hauteur de capitale du titre. */
+    .proj-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+    }
+    .proj-body h3 {
+      font-size: 24px;
+      letter-spacing: -.02em;
+      min-width: 0;
+    }
+    /* la tuile « a venir » n'a pas d'en-tete : son titre garde sa marge */
+    .proj-body>h3 {
+      margin-bottom: 9px;
+    }
+
+    /* ----- BADGE D'OFFRE -----
+       Le cercle est celui de la carte d'offre correspondante, repris tel quel
+       depuis CONFIG.services : quart rempli pour Lite, moitie pour Basic,
+       plein pour Full. Le remplissage dit le niveau avant meme qu'on lise le
+       mot — c'est la seule raison d'etre de ces trois icones.
+       `flex: none` : c'est le titre qui passe a la ligne, jamais le badge qui
+       se comprime. */
+    .offre {
+      flex: none;
+      margin-top: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px 5px 8px;
+      border-radius: var(--pill);
+      background: var(--card-hi);
+      border: 1px solid var(--line);
+      box-shadow: var(--card-inner);
+    }
+    .offre svg {
+      width: 14px;
+      height: 14px;
+      flex: none;
+      display: block;
+      color: var(--accent);
+    }
+    .offre b {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: -.005em;
+      color: var(--txt-dim);
+    }
+    .proj-body>p {
+      font-size: 16px;
+      line-height: 1.45;
+      color: var(--txt-dim);
+      text-wrap: pretty;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 18px;
+    }
+    .chip {
+      font-size: 12px;
+      color: var(--txt-dim);
+      padding: 5px 11px;
+      border-radius: var(--pill);
+      background: var(--card-hi);
+      border: 1px solid var(--line);
+      box-shadow: var(--card-inner);
+    }
+    /* margin-top:auto — .proj-body est une colonne flex en flex:1, le lien
+       tombe donc en bas de la tuile quelle que soit la longueur du texte */
+    .proj-link {
+      margin-top: auto;
+      padding-top: 22px;
+      align-self: flex-start;
+      display: inline-flex;
+      gap: 8px;
+      font-size: .86rem;
+      color: var(--accent);
+      font-weight: 500;
+      transition: gap .3s;
+    }
+    .proj:hover .proj-link {
+      gap: 14px;
+    }
+
+    /* ----- PARCOURS ----- */
+    .tl {
+      max-width: var(--read);
+      margin: 0 auto;
+      border-top: 1px solid var(--line);
+      position: relative;
+      padding-left: 36px;
+    }
+    .tl::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      border-radius: 2px;
+      background: linear-gradient(var(--accent), var(--accent), transparent);
+    }
+    .ev {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 32px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+    /* Pastille centree sur le filet : .tl a 36px de padding gauche, la
+       pastille part donc a -36px et fait 16px -> centre a 8px. Le filet est
+       a left:7px sur 2px -> centre a 8px lui aussi. En 17px le centre
+       tombait a 8,5px et la pastille etait visiblement decalee.
+       Fond OPAQUE (var(--bg)) : en translucide le filet se voyait au travers. */
+    .ev::before {
+      content: '';
+      position: absolute;
+      left: -36px;
+      top: 38px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+      box-shadow: 0 2px 10px rgba(0, 113, 227, .3);
+    }
+    @media(max-width:700px) {
+      .ev {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 26px 0;
+      }
+      .ev::before {
+        top: 32px;
+      }
+    }
+    .ev .yr {
+      font-size: 15px;
+      color: var(--accent);
+      letter-spacing: -.005em;
+      padding-top: 3px;
+      font-weight: 600;
+    }
+    .ev h3 {
+      font-size: 21px;
+      letter-spacing: -.018em;
+      margin-bottom: 3px;
+    }
+    .ev .org {
+      font-size: 15px;
+      color: var(--accent);
+      margin-bottom: 9px;
+    }
+    .ev p {
+      font-size: 16px;
+      line-height: 1.45;
+      color: var(--txt-dim);
+      text-wrap: pretty;
+    }
+
+    /* ----- CONTACT ----- */
+    .ct {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 56px;
+      align-items: start;
+    }
+    @media(max-width:880px) {
+      .ct {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .field {
+      margin-bottom: 14px;
+    }
+    .field label {
+      display: block;
+      font-size: 14px;
+      color: var(--txt-dim);
+      margin-bottom: 7px;
+    }
+    .field input,
+    .field textarea {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--card-shadow), var(--card-inner);
+      border-radius: var(--radius-s);
+      padding: 14px 16px;
+      color: var(--txt);
+      font-family: inherit;
+      font-size: 17px;
+      letter-spacing: -.01em;
+      transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: var(--txt-dim);
+      opacity: .75;
+    }
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: var(--card-hi);
+      box-shadow: 0 0 0 4px rgba(0, 113, 227, .18), var(--card-inner);
+    }
+    html[data-theme="dark"] .field input:focus,
+    html[data-theme="dark"] .field textarea:focus {
+      box-shadow: 0 0 0 4px rgba(41, 151, 255, .25), var(--card-inner);
+    }
+    .field textarea {
+      resize: vertical;
+      min-height: 132px;
+      line-height: 1.45;
+    }
+    form .btn {
+      width: 100%;
+      margin-top: 8px;
+      border: 0;
+      cursor: var(--cur-link);
+      justify-content: center;
+    }
+    form .btn[disabled] {
+      opacity: .55;
+      pointer-events: none;
+    }
+
+    /* piège à robots — hors écran, jamais affiché */
+    .hp {
+      position: absolute !important;
+      left: -9999px !important;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    /* Captcha Cloudflare Turnstile.
+       Le widget est un iframe : son intérieur n'est pas stylable depuis
+       ici. On l'accorde donc au site par ce qui est accessible — le thème
+       (piloté en JS), la largeur (mode `flexible`, qui lui fait épouser la
+       colonne comme les autres champs) et le rayon des coins.
+
+       Poser le rayon sur l'iframe ne suffisait pas : le widget dessine SA
+       propre bordure et SES propres coins a l'interieur de son document,
+       hors de portee du CSS de la page. #cfTurnstile devient donc une vraie
+       boite de formulaire — mêmes fond, bordure, ombre et --radius-s que les
+       champs — et le contenu deborde de --cf-crop sur chaque bord pour que
+       overflow:hidden avale la bordure du widget.
+
+       --cf-crop est le seul reglage a toucher : trop bas, le liseré interne
+       reapparait ; trop haut, le logo Cloudflare en bas a droite se fait
+       manger. Le rognage porte sur l'enfant direct (Turnstile insere tantot
+       un <div> conteneur, tantot l'iframe seule) — d'ou les deux selecteurs. */
+    .cf-wrap {
+      min-height: 90px;
+    }
+    #cfTurnstile {
+      --cf-crop: 7px;
+      overflow: hidden;
+      min-height: 55px;
+      border-radius: var(--radius-s);
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--card-shadow), var(--card-inner);
+      transition: border-color .2s, background .2s;
+    }
+    /* l'iframe interne suit son conteneur, elle n'est pas rognee deux fois.
+       Specificite volontairement superieure a la regle de rognage ci-dessous,
+       qui ne doit s'appliquer qu'a l'enfant direct. */
+    #cfTurnstile>div iframe {
+      width: 100% !important;
+      max-width: none !important;
+      margin: 0 !important;
+    }
+    #cfTurnstile>div,
+    #cfTurnstile>iframe {
+      display: block;
+      width: calc(100% + var(--cf-crop) * 2) !important;
+      max-width: none !important;
+      margin: calc(var(--cf-crop) * -1) !important;
+    }
+    #cfTurnstile *,
+    #cfTurnstile iframe {
+      border: 0 !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+
+    /* retour utilisateur après envoi */
+    .form-msg {
+      margin: 14px 0 0;
+      font-size: 15px;
+      line-height: 1.5;
+      min-height: 1.5em;
+      color: var(--txt-dim);
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity .3s var(--ease), transform .3s var(--ease);
+    }
+    .form-msg.show {
+      opacity: 1;
+      transform: none;
+    }
+    .form-msg.ok {
+      color: var(--ok);
+    }
+    .form-msg.err {
+      color: #d9342b;
+    }
+    html[data-theme="dark"] .form-msg.err {
+      color: #ff6b60;
+    }
+
+    .tva {
+      margin-top: 28px;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--txt-dim);
+      max-width: 62ch;
+      margin-inline: auto;
+      text-wrap: pretty;
+    }
+
+    .cts {
+      border-top: 1px solid var(--line);
+    }
+    .ci {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      transition: .35s var(--ease);
+    }
+    .ci:hover {
+      transform: translateX(5px);
+    }
+    .ci small {
+      display: block;
+      font-size: 14px;
+      color: var(--txt-dim);
+      margin-bottom: 2px;
+    }
+    .ci b {
+      font-weight: 400;
+      font-size: 17px;
+    }
+    .ci .go {
+      color: var(--accent);
+      font-size: 17px;
+      flex: none;
+    }
+    .ci:hover b {
+      color: var(--accent);
+    }
+
+    /* ----- FOOTER ----- */
+    footer {
+      background: var(--veil-alt);
+      border-top: 1px solid var(--line);
+      padding: 28px 0;
+      font-size: 12px;
+      color: var(--txt-dim);
+    }
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    /* #footL contient désormais le copyright ET les liens légaux :
+       il doit s'étaler sur toute la largeur du pied de page. */
+    #footL {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px 26px;
+      width: 100%;
+    }
+    .foot-legal {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+    .foot-legal a {
+      color: var(--txt-dim);
+      transition: color .3s;
+    }
+    .foot-legal a:hover {
+      color: var(--accent);
+    }
+    @media(max-width:560px) {
+      #footL {
+        justify-content: center;
+        text-align: center;
+      }
+      .foot-legal {
+        justify-content: center;
+        gap: 16px;
+      }
+    }
+
+    /* ----- CANVAS ----- */
+    #net {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: .3;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    @media(max-width:900px) {
+      #net {
+        display: none;
+      }
+    }
+
+    /* ----- CARROUSELS MOBILE (pistes) ----- */
+    .dots {
+      display: none;
+    }
+
+    /* ----- REDUCED MOTION ----- */
+    @media(prefers-reduced-motion:reduce) {
+      * {
+        animation: none !important;
+        transition: none !important;
+      }
+      .rv,
+      .hero-photo picture,
+      .load-mark,
+      .load-name span,
+      h1.title .line>span {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    /* ============================================================
+       MOBILE — confort de lecture et cibles tactiles.
+       ============================================================ */
+    @media(max-width:860px) {
+      html {
+        -webkit-tap-highlight-color: transparent;
+      }
+      .wrap {
+        padding: 0 20px;
+      }
+      section[id] {
+        scroll-margin-top: 80px;
+      }
+
+      header {
+        top: 10px;
+      }
+      /* .nav EST aussi .wrap : sans marge laterale la capsule touche les bords.
+         Le fond reste sur ::before (voir le correctif plus haut). */
+      .nav {
+        padding: 8px 8px 8px 16px;
+        margin: 0 14px;
+        width: auto;
+      }
+      .logo {
+        font-size: 1rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      #themeBtn,
+      #burger {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        padding: 0;
+      }
+      /* CORRECTIF : le burger restait en display:none sous 860px alors que
+         .links passe en calque fixe masque. Resultat, plus aucun lien de
+         navigation n'etait atteignable sur telephone. */
+      #burger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      /* la place revient au burger ; l'appel a l'action est repris dans le
+         menu plein ecran par .menu-cta */
+      .nav-cta {
+        display: none;
+      }
+
+      .links {
+        position: fixed;
+        left: 0;
+        right: 0;
+        /* plein ecran : la capsule se dissout dessous, le menu n'a donc pas
+           a se caler dessous au pixel pres */
+        top: 0;
+        bottom: 0;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 0;
+        background: rgba(255, 255, 255, .88);
+        backdrop-filter: blur(30px) saturate(180%);
+        -webkit-backdrop-filter: blur(30px) saturate(180%);
+        padding: 84px 20px 40px;
+        transform: translateY(-8px);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .3s var(--ease), transform .3s var(--ease), visibility .3s;
+        text-align: center;
+      }
+      html[data-theme="dark"] .links {
+        background: rgba(0, 0, 0, .88);
+      }
+      /* le menu passe en calque plein ecran : la pastille glissante n'a plus
+         de rangee horizontale ou courir, le reperage se fait par la barre
+         d'accent a gauche du lien actif (voir plus bas). */
+      .nav-pill {
+        display: none;
+      }
+      .links.open {
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+      }
+      .links a {
+        width: 100%;
+        text-align: left;
+        font-size: 26px;
+        font-weight: 600;
+        letter-spacing: -.02em;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--line);
+        border-radius: 0;
+        opacity: 1;
+      }
+      .links a:hover {
+        background: none;
+      }
+      /* La pastille du bureau (fond + ombre portée) devient un gros bloc
+         rectangulaire une fois la rangée en pleine largeur et sans rayon.
+         On la remplace par un simple repère : libellé en accent, barre à
+         gauche, et un léger décalage du texte. */
+      .links a.on:not(.menu-cta) {
+        background: none;
+        box-shadow: none;
+        color: var(--accent);
+        position: relative;
+        padding-left: 16px;
+      }
+      .links a.on:not(.menu-cta)::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        translate: 0 -50%;
+        width: 3px;
+        height: 24px;
+        border-radius: 99px;
+        background: var(--accent);
+      }
+      .menu-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 24px;
+        padding: 14px 26px;
+        border-radius: var(--pill);
+        background: var(--accent);
+        color: #fff;
+        font-size: 17px;
+        font-weight: 400;
+        border-bottom: 0;
+      }
+      .links a.menu-cta,
+      .links a.menu-cta.on {
+        background: var(--accent);
+        color: #fff;
+        text-align: center;
+        border-radius: var(--pill);
+      }
+      body.menu-open {
+        overflow: hidden;
+      }
+
+      #hero {
+        padding: 0;
+        min-height: auto;
+      }
+
+      /* ============ REFONTE MOBILE DU HERO ============
+         Le probleme n'etait pas un reglage mais l'absence de systeme. La
+         colonne empilait cinq niveaux de texte — 14 / 30 / 16 / 14,7 / 14,7px —
+         dont trois separes par moins d'un pixel et tous en --txt-dim : rien
+         ne disait a l'oeil ce qui comptait. Tout etait centre, y compris un
+         titre de quatre lignes et un pitch de 36 caracteres, ce qui donne
+         quatre bords gauches differents. Et les marges (16, 10, 12, 22)
+         ne suivaient aucune unite.
+
+         Trois corrections structurelles :
+
+         1. UN SEUL AXE. Tout le texte s'aligne a gauche. Le filet vertical
+            de .avail redevient celui du bureau au lieu d'une variante
+            horizontale propre au telephone : mobile et bureau partagent
+            enfin le meme langage. Seule la photo reste centree — c'est une
+            image, pas du texte, et elle forme sa propre bande.
+
+         2. UNE ECHELLE. Quatre tailles franches au lieu de cinq indistinctes :
+            13 (statut) / 15 (pitch) / 17 (role) / 32 (titre). Le rapport
+            titre-sur-role vaut ~1,9 : la hierarchie se lit sans effort.
+            La paire du statut se distingue par la graisse et la couleur,
+            pas par la taille — c'est un seul bloc, pas deux niveaux.
+
+         3. UN RYTHME. Toutes les marges verticales sont des multiples de 4 :
+            20 / 12 / 16 / 28 / 36. Plus de valeur au juge.
+         ================================================ */
+      .hero-in {
+        padding: 92px 20px 40px;
+        text-align: left;
+        justify-items: stretch;
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .scroll-hint {
+        display: none;
+      }
+      .hero-txt {
+        width: 100%;
+      }
+      .btns {
+        justify-content: flex-start;
+        margin: 28px 0 0;
+        gap: 10px;
+        max-width: none;
+      }
+      .btn {
+        flex: 1 1 100%;
+        justify-content: center;
+        padding: 15px 18px;
+        font-size: .92rem;
+      }
+
+      .hero-photo {
+        margin-top: 36px;
+        width: 100%;
+      }
+      .hero-photo picture {
+        max-width: 225px;
+        margin-bottom: 0;
+      }
+      .hero-photo img {
+        max-height: 38svh;
+      }
+      .ph-disc {
+        width: auto;
+        height: 27svh;
+        aspect-ratio: 1;
+        max-width: none;
+        bottom: 2%;
+      }
+      .ph-glow {
+        width: auto;
+        height: 30svh;
+        aspect-ratio: 1;
+        bottom: 8%;
+      }
+      /* Sur téléphone la photo est centrée : la plaque revient au centre
+         plutôt qu'à droite, sinon elle déborde de la colonne. */
+      .ph-plate {
+        left: 0;
+        right: 0;
+        margin-inline: auto;
+        width: max-content;
+        max-width: 100%;
+        bottom: 0;
+        padding: 9px 15px 9px 12px;
+      }
+      .ph-plate b {
+        font-size: .84rem;
+      }
+      .ph-plate small {
+        font-size: .71rem;
+      }
+
+      /* Le filet reste vertical, comme au bureau : c'est lui qui pose l'axe
+         gauche que tout le reste de la colonne suit. Les deux lignes forment
+         UN bloc — meme taille, la graisse et la couleur suffisent a les
+         distinguer — et non deux niveaux de plus dans la pile. */
+      .avail {
+        margin: 0 0 20px;
+        padding: 0 0 0 13px;
+        text-align: left;
+        width: auto;
+        max-width: none;
+      }
+      .avail::before {
+        left: 0;
+        right: auto;
+        top: 3px;
+        bottom: 3px;
+        width: 2px;
+        height: auto;
+        transform: none;
+      }
+      .avail b,
+      .avail span {
+        font-size: 13px;
+        line-height: 1.4;
+      }
+      h1.title {
+        font-size: clamp(1.95rem, 8.6vw, 2.45rem);
+        letter-spacing: -.032em;
+        line-height: 1.07;
+      }
+      /* La machine a ecrire change de longueur a chaque phrase : sans hauteur
+         reservee, la plus longue passe a deux lignes et pousse tout le bloc
+         vers le bas en pleine frappe. On reserve donc les deux lignes une
+         fois pour toutes — un vide constant vaut mieux qu'une page qui saute. */
+      .role {
+        margin-top: 12px;
+        font-size: 1.0625rem;
+        line-height: 1.35;
+        min-height: 2.7em;
+      }
+      .pitch {
+        margin: 16px 0 0;
+        font-size: .9375rem;
+        line-height: 1.5;
+        max-width: 38ch;
+      }
+
+      section {
+        padding: 76px 0;
+      }
+      .head {
+        margin-bottom: 40px;
+      }
+      .head h2 {
+        font-size: clamp(1.75rem, 7vw, 2.35rem);
+      }
+      .eyebrow {
+        margin-bottom: 14px;
+      }
+
+      .about p {
+        font-size: .97rem;
+      }
+      .stats {
+        gap: 12px;
+      }
+      .stat {
+        padding: 20px 18px;
+      }
+      .stat b {
+        font-size: 1.85rem;
+      }
+
+      /* En carrousel, le filet du haut ne peut plus barrer le bloc entier :
+         il défilerait avec le contenu. Chaque colonne porte le sien. */
+      .spec {
+        margin-top: 34px;
+        border-top: 0;
+      }
+      .spec-col {
+        border-top: 1px solid var(--line);
+        padding-top: 20px;
+      }
+
+      .card {
+        padding: 28px 24px;
+        border-radius: var(--radius);
+      }
+      .card .ico {
+        width: 48px;
+        height: 48px;
+        border-radius: 15px;
+        margin-bottom: 18px;
+      }
+      .tag {
+        top: 28px;
+        right: 24px;
+        height: 48px;
+      }
+
+      /* carrousels */
+      .svc,
+      .svc2,
+      .projs,
+      .spec {
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        margin-left: -20px;
+        margin-right: -20px;
+        padding: 10px 20px 18px;
+        scroll-padding-left: 20px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      .svc::-webkit-scrollbar,
+      .svc2::-webkit-scrollbar,
+      .projs::-webkit-scrollbar,
+      .spec::-webkit-scrollbar {
+        display: none;
+      }
+      .svc2 {
+        margin-top: 10px;
+      }
+      .svc>*,
+      .svc2>*,
+      .projs>*,
+      .spec>* {
+        flex: 0 0 84%;
+        max-width: 340px;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+      }
+      .card:hover,
+      .proj:hover {
+        transform: none;
+        background: var(--card);
+        box-shadow: var(--card-shadow), var(--card-inner);
+      }
+      .card.hot:hover {
+        box-shadow: var(--card-shadow-hi), var(--card-inner);
+      }
+      .svc>.rv,
+      .svc2>.rv,
+      .projs>.rv {
+        transition-delay: 0s !important;
+      }
+
+      /* Remontés contre le carrousel : posés au milieu de l'espace qui
+         suit, ils se lisaient comme un élément de la section suivante. */
+      .dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: -12px;
+      }
+      .dots button {
+        width: 7px;
+        height: 7px;
+        padding: 0;
+        border: 0;
+        border-radius: 99px;
+        cursor: var(--cur-link);
+        background: var(--txt-dim);
+        opacity: .35;
+        transition: width .35s var(--ease), opacity .35s, background .35s;
+      }
+      .dots button.on {
+        width: 22px;
+        opacity: 1;
+        background: var(--accent);
+      }
+
+      .thumb {
+        height: 180px;
+      }
+      .proj-body {
+        padding: 22px 22px 26px;
+      }
+
+      .tl {
+        padding-left: 30px;
+      }
+      .tl::before {
+        left: 6px;
+      }
+      .ev {
+        padding-bottom: 34px;
+      }
+      .ev::before {
+        left: -30px;
+        width: 14px;
+        height: 14px;
+        top: 32px;
+      }
+
+      .field input,
+      .field textarea {
+        font-size: 16px;
+        padding: 14px 15px;
+      }
+      .field textarea {
+        min-height: 120px;
+      }
+      .field input:focus,
+      .field textarea:focus {
+        box-shadow: 0 0 0 3px rgba(0, 113, 227, .14), var(--card-inner);
+      }
+
+      .ci {
+        padding: 14px 12px;
+        gap: 14px;
+      }
+      .ci:hover {
+        transform: none;
+      }
+
+      .foot {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+    }
+
+    @media(max-width:400px) {
+      /* L'echelle mobile tient telle quelle sous 400px ; seuls le titre et le
+         pitch descendent d'un cran, le statut est deja a son plancher. */
+      h1.title {
+        font-size: 1.85rem;
+      }
+      .pitch {
+        font-size: .9rem;
+      }
+      .btn {
+        flex: 1 1 100%;
+        padding: 14px 14px;
+      }
+      .stats {
+        grid-template-columns: 1fr;
+      }
+      .hero-photo picture {
+        max-width: 205px;
+      }
+      .hero-photo img {
+        max-height: 34svh;
+      }
+      .ph-disc {
+        height: 24svh;
+      }
+      .ph-glow {
+        height: 27svh;
+      }
+      .card {
+        padding: 24px 20px;
+      }
+      .tag {
+        top: 24px;
+        right: 20px;
+      }
+    }
+
+    @media(max-width:860px) and (max-height:800px) {
+      .hero-in {
+        padding: 82px 20px 26px;
+      }
+      /* Ecran court (paysage, petits telephones) : le rythme se resserre mais
+         garde son unite de 4px, et l'echelle garde ses ecarts relatifs. Le
+         padding-left du filet n'est pas touche — seule la marge basse bouge. */
+      .avail {
+        margin-bottom: 12px;
+      }
+      h1.title {
+        font-size: 1.72rem;
+      }
+      .role {
+        margin-top: 8px;
+        font-size: 1rem;
+        min-height: 2.7em;
+      }
+      .pitch {
+        font-size: .88rem;
+        margin-top: 12px;
+      }
+      .btns {
+        margin-top: 20px;
+      }
+      .btn {
+        padding: 13px 16px;
+      }
+      .hero-photo {
+        margin-top: 20px;
+      }
+      .hero-photo img {
+        max-height: 31svh;
+      }
+      .ph-disc {
+        height: 22svh;
+      }
+      .ph-glow {
+        height: 25svh;
+      }
+    }
+
+    @media(max-height:520px) and (orientation:landscape) {
+      #hero {
+        min-height: auto;
+      }
+      .hero-in {
+        padding: 100px 20px 56px;
+      }
+      .hero-photo {
+        display: none;
+      }
+    }
+
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .glass,
+      .stat,
+      .card,
+      .proj,
+      .nav {
+        background: rgba(255, 255, 255, .88);
+      }
+      html[data-theme="dark"] .glass,
+      html[data-theme="dark"] .stat,
+      html[data-theme="dark"] .card,
+      html[data-theme="dark"] .proj,
+      html[data-theme="dark"] .nav {
+        background: rgba(18, 20, 32, .92);
+      }
+    }
+  </style>
+</head>
+<body class="loading">
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="load-lock">
+      <svg class="load-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect class="p" x="4"  y="4"  width="11" height="11" rx="1.4" fill="var(--accent)"></rect>
+        <rect class="p" x="17" y="4"  width="11" height="11" rx="1.4" fill="var(--accent)"></rect>
+        <rect class="p" x="4"  y="17" width="11" height="11" rx="1.4" fill="var(--accent)"></rect>
+        <rect class="p" x="17" y="17" width="11" height="11" rx="1.4" fill="currentColor" opacity=".9"></rect>
+      </svg>
+      <div class="load-name" id="loadName"></div>
+    </div>
+    <div class="load-bar"><i></i></div>
+  </div>
+
+  <!-- CURSEUR & PROGRESS -->
+  <div id="progress"></div>
+
+  <!-- NAV -->
+  <header id="hdr">
+    <div class="wrap nav">
+      <a href="#hero" class="logo" aria-label="Piksel — accueil">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <rect class="p" x="4"  y="4"  width="11" height="11" fill="var(--accent)"></rect>
+          <rect class="p" x="17" y="4"  width="11" height="11" fill="var(--accent)"></rect>
+          <rect class="p" x="4"  y="17" width="11" height="11" fill="var(--accent)"></rect>
+          <rect class="p" x="17" y="17" width="11" height="11" fill="currentColor" opacity=".9"></rect>
+        </svg>
+        <span id="navLogo"></span>
+      </a>
+      <nav class="links" id="links">
+        <span class="nav-pill" id="navPill" aria-hidden="true"></span>
+        <a href="#about">À propos</a>
+        <a href="#services">Services</a>
+        <a href="#work">Réalisations</a>
+        <a href="#path">Parcours</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="menu-cta">Discutons</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="themeBtn" aria-label="Changer de thème">◐</button>
+        <a href="#contact" class="nav-cta">Discutons</a>
+        <button id="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <canvas id="net"></canvas>
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+
+    <div class="wrap hero-in">
+      <div class="hero-txt">
+        <p class="avail"><b id="availTxt"></b><span id="availSub"></span></p>
+        <h1 class="title" id="heroTitle"></h1>
+        <div class="role"><span class="type" id="typed"></span><span class="cur"></span></div>
+        <p class="pitch" id="pitch"></p>
+        <div class="btns">
+          <a href="#work" class="btn btn-p">Voir mes réalisations</a>
+          <a href="#contact" class="btn btn-s">Me contacter</a>
+        </div>
+      </div>
+
+      <figure class="hero-photo">
+        <span class="ph-glow" aria-hidden="true"></span>
+        <span class="ph-disc" aria-hidden="true"></span>
+        <picture>
+          <source media="(max-width:860px)" srcset="teiva-600.webp" type="image/webp">
+          <source srcset="teiva.webp" type="image/webp">
+          <img src="teiva.png" alt="Portrait de Teiva Mettelet, développeur web et fondateur de Piksel"
+               width="972" height="1619" fetchpriority="high" decoding="async">
+        </picture>
+        <figcaption class="ph-plate">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <rect class="p" x="4"  y="4"  width="11" height="11" rx="1.4" fill="var(--accent)"></rect>
+            <rect class="p" x="17" y="4"  width="11" height="11" rx="1.4" fill="var(--accent)"></rect>
+            <rect class="p" x="4"  y="17" width="11" height="11" rx="1.4" fill="var(--accent)"></rect>
+            <rect class="p" x="17" y="17" width="11" height="11" rx="1.4" fill="currentColor" opacity=".9"></rect>
+          </svg>
+          <span><b id="capNom"></b><small id="capRole"></small></span>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="scroll-hint">Scroll<span></span></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="alt">
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">À propos</div>
+        <h2>Le web local mérite mieux qu'une page Facebook</h2>
+      </div>
+      <div class="about">
+        <div class="rv" id="bio"></div>
+        <div class="stats rv" id="stats"></div>
+      </div>
+      <!-- bloc de caractéristiques techniques -->
+      <div class="spec rv" id="specGrid">
+        <div class="spec-col"><h3>Prestations</h3><ul id="specRoles"></ul></div>
+        <div class="spec-col"><h3>Technologies</h3><ul id="specTech"></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Services</div>
+        <h2>Des offres claires et sans surprise</h2>
+        <p>Pas de jargon, pas de devis à rallonge. Un prix, un délai, un site qui tourne.</p>
+      </div>
+      <div class="svc" id="svcGrid"></div>
+      <div class="svc2" id="svcExtra"></div>
+      <!-- Obligatoire dès lors qu'un prix est affiché : le visiteur doit
+           savoir si le montant est net. En franchise en base, il n'y a pas
+           de TVA à ajouter — le prix affiché est celui qu'il paiera. -->
+      <p class="tva rv">
+        Prix nets, en euros. TVA non applicable — article 293 B du Code général des impôts.
+        Aucune TVA ne s'ajoute au montant indiqué.
+      </p>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="alt">
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Réalisations</div>
+        <h2>Quelques projets</h2>
+      </div>
+      <div class="projs" id="projGrid"></div>
+    </div>
+  </section>
+
+  <!-- PATH -->
+  <section id="path">
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Parcours</div>
+        <h2>D'où je viens</h2>
+      </div>
+      <div class="tl rv" id="timeline"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="alt">
+    <div class="wrap">
+      <div class="head rv">
+        <div class="eyebrow">Contact</div>
+        <h2>Parlons de votre site</h2>
+        <p>Réponse sous 24 h. Le premier échange et la maquette ne coûtent rien.</p>
+      </div>
+      <div class="ct">
+        <form class="rv" id="form" novalidate>
+          <div class="field"><label for="n">Nom</label><input id="n" name="name" autocomplete="name" required maxlength="120" placeholder="Votre nom"></div>
+          <div class="field"><label for="e">Email</label><input id="e" name="email" type="email" autocomplete="email" required maxlength="180" placeholder="vous@exemple.fr"></div>
+          <div class="field"><label for="m">Votre projet</label><textarea id="m" name="message" required maxlength="4000" placeholder="Je gère un restaurant à Brest et je n'ai pas de site…"></textarea></div>
+
+          <!-- piège à robots : invisible et ignoré des lecteurs d'écran -->
+          <div class="hp" aria-hidden="true">
+            <label for="company">Société</label>
+            <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="field cf-wrap">
+            <label for="cfTurnstile">Vérification</label>
+            <div id="cfTurnstile" data-sitekey="0x4AAAAAAESmJAE3zBv5Ovzq"></div>
+          </div>
+
+          <button type="submit" class="btn btn-p" id="formSubmit">Envoyer le message</button>
+          <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+        </form>
+        <div class="cts rv" id="contactInfo"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <span id="footL"></span>
+    </div>
+  </footer>
+
+  <script>
+    /* ============================================================
+       ⚙️  CONFIG — TOUT LE CONTENU DU SITE EST ICI.
+       Modifie uniquement ce bloc pour personnaliser le site.
+       ============================================================ */
+    const CONFIG = {
+      nom: "Teiva Mettelet",
+      marque: "Piksel",
+      dispo: "Disponible pour de nouveaux projets",
+      dispoSub: "Réponse sous 24 h · Maquette offerte",
+      titre: ["Je construis", "des sites qui", "font venir", "des clients."],
+      // Accroches de la machine à écrire du hero, uniquement.
+      roles: [
+        "Développeur web freelance",
+        "Sites vitrines pour commerces locaux",
+        "HTML · CSS · JavaScript",
+        "Rapide, responsive, bien référencé"
+      ],
+      // Colonne « Prestations ». Autant d'entrées que `competences`
+      // pour que les deux colonnes se terminent à la même hauteur.
+      prestations: [
+        "Site vitrine sur mesure",
+        "Refonte de site vieillissant",
+        "Référencement Google local",
+        "Formulaire de contact",
+        "Google Maps & horaires",
+        "Maquette offerte avant devis",
+        "Formation à la mise à jour",
+        "Maintenance & sauvegardes"
+      ],
+      pitch: "J'aide les entreprises locales à exister en ligne avec un site rapide, moderne et pensé pour convertir. Livré en quelques jours, à un prix qui tient dans un budget de petite structure.",
+      competences: ["HTML5", "CSS3", "JavaScript", "SEO local", "Responsive", "Performance", "Design UI", "Accessibilité"],
+      bio: [
+        "Je suis développeur, et je passe mon temps libre à créer des sites pour les entreprises de ma ville. Le constat est simple : beaucoup de très bons commerçants ont soit <strong>aucun site</strong>, soit un site qui date de 2011, illisible sur téléphone, invisible sur Google.",
+        "Mon approche est directe : je regarde votre activité, je conçois une maquette, et je vous la montre. <strong>Vous ne payez que si elle vous plaît.</strong> Pas d'abonnement caché, pas d'usine à gaz, un site propre dont vous êtes propriétaire.",
+        "Je code tout à la main. Pas de constructeur de pages lourd qui met huit secondes à charger : du HTML, du CSS et du JavaScript optimisés, qui s'affichent instantanément même en 4G."
+      ],
+      stats: [
+        { n: "100 %", l: "adaptable à vos besoins" },
+        { n: "100 %", l: "responsive mobile" },
+        { n: "< 1 s", l: "temps de chargement visé" },
+        { n: "0 €", l: "si la maquette ne vous plaît pas" }
+      ],
+      services: [{
+        i: "<svg viewBox='0 0 24 24' fill='none' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='9' stroke='currentColor' stroke-width='1.7'/><path d='M12 12V3a9 9 0 0 1 9 9Z' fill='currentColor'/></svg>",
+        t: "Lite",
+        d: "Une page unique, élégante et complète. Idéale pour un artisan ou un petit commerce qui veut simplement exister sur Google.",
+        p: "250 €",
+        u: "livré en 5 jours",
+        l: ["Page unique responsive", "Formulaire de contact", "Référencement Google local", "1 retouche incluse"]
+      }, {
+        i: "<svg viewBox='0 0 24 24' fill='none' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='9' stroke='currentColor' stroke-width='1.7'/><path d='M12 12V3a9 9 0 0 1 0 18Z' fill='currentColor'/></svg>",
+        t: "Basic",
+        d: "Plusieurs pages pour présenter vos services, votre équipe, votre carte ou vos réalisations en détail.",
+        p: "500 €",
+        u: "livré en 10 jours",
+        hot: true,
+        l: ["Jusqu'à 5 pages", "Google Maps & horaires", "Cybersécurité renforcée", "Formation à la mise à jour",
+          "3 retouches incluses"
+        ]
+      }, {
+        i: "<svg viewBox='0 0 24 24' fill='none' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><circle cx='12' cy='12' r='9' fill='currentColor'/></svg>",
+        t: "Full",
+        d: "Le sur-mesure, sans compteur. On travaille le design ensemble jusqu'à ce que le résultat vous convienne vraiment.",
+        p: "650 €",
+        u: "délai selon le projet",
+        l: ["Tout ce que contient le Basic", "Nombre de pages illimité", "Design conçu avec vous jusqu'à satisfaction",
+          "Retouches illimitées", "Maintenance & évolutions incluses 5 mois"
+        ]
+      }],
+      extras: [{
+        i: "<svg viewBox='0 0 24 24' fill='none' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><polyline points='22 4 22 10 16 10' stroke='currentColor' stroke-width='1.8'/><path d='M19.6 15a8.5 8.5 0 1 1-2-8.8L22 10' stroke='currentColor' stroke-width='1.8'/></svg>",
+        t: "Maintenance & évolutions",
+        d: "Votre site reste à jour, sauvegardé et sécurisé sans que vous ayez à y penser.",
+        p: "15 €",
+        u: "par mois, sans engagement",
+        l: ["Mises à jour du contenu", "Sauvegardes mensuelles", "Suivi des performances", "Support par email",
+          "Résiliable à tout moment"
+        ]
+      }, {
+        i: "<svg viewBox='0 0 24 24' fill='none' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'><path d='M12 20h9' stroke='currentColor' stroke-width='1.8'/><path d='M16.6 3.6a2.1 2.1 0 0 1 3 3L7.2 19l-4.2 1.2 1.2-4.2Z' stroke='currentColor' stroke-width='1.8'/></svg>",
+        t: "Retouches supplémentaires",
+        d: "Au-delà des retouches comprises dans votre offre, à l'unité et sans abonnement.",
+        p: "50 €",
+        u: "la retouche",
+        l: ["Texte, photo, couleur ou section", "Limitées à 5 par projet", "Illimitées avec l'offre Full",
+          "Réalisées sous 48 h"
+        ]
+      }],
+      /* `offre` renvoie a une entree de `services` par son `t` (Lite, Basic,
+         Full). Le badge de la tuile reprend alors le cercle exact de la carte
+         d'offre correspondante : le meme signe designe la meme chose des deux
+         cotes de la page. Omettre la cle si le projet ne releve d'aucune
+         offre — le badge disparait, rien ne casse. */
+      projets: [{
+        t: "Haverhill Peaks",
+        d: "Un groupe de musique breton dont l'actualité se perdait entre les réseaux sociaux. Le site réunit désormais concerts, titres et annonces au même endroit.",
+        c: ["Musique", "Agenda", "Vidéos/Photos"],
+        offre: "Full",
+        img: "projets/haverhill_peaks.png",
+        url: "https://teiiva.github.io/Haverhill_Peaks_site/",
+        g: "#2a2721",
+        init: "01"
+      },
+      /* --- Projet retiré temporairement de la grille ---------------------
+         Décommenter ce bloc pour le réafficher (et supprimer la tuile
+         `soon` en fin de liste, sinon la grille passe à 4 tuiles).
+      {
+        t: "Ledouit Damien",
+        d: "Artisan carreleur à Plouzané depuis 2015, Damien Ledouit n'avait aucun site : ses chantiers ne se voyaient nulle part et les recherches locales partaient chez son concurrent. Cette page unique remet ses réalisations au centre et lui donne enfin une adresse qu'il contrôle.",
+        c: ["Carreleur", "Prise de rendez-vous", "Photos"],
+        img: "projets/Damien_Ledouit.png",
+        url: "https://teiiva.github.io/Damien_Ledouit/",
+        g: "#2a2721",
+        init: "01"
+      },
+      ------------------------------------------------------------------- */
+      {
+        t: "Le Chalet de la Grève Blanche",
+        d: "Site vitrine d'une location saisonnière au Guilvinec, avec galerie photo, calendrier de disponibilités en temps réel et espace propriétaire pour gérer les réservations.",
+        c: ["Réservation", "Photos"],
+        offre: "Basic",
+        img: "projets/chalet_de_la_greve_blanche.png",
+        url: "https://chalet-de-la-greve-blanche.pages.dev/",
+        g: "#2a2721",
+        init: "01"
+      }, {
+        // Tuile d'attente : ni lien ni image, elle occupe la 3ᵉ place
+        // pour que la grille reste équilibrée.
+        soon: true,
+        t: "Votre projet ici",
+        d: "Une place est libre pour la prochaine mise en ligne. Parlons de votre site, la maquette est offerte.",
+        c: ["Disponible", "Maquette offerte"]
+      }],
+      parcours: [
+        { y: "2026 — aujourd'hui", t: "Développeur web freelance", o: "À mon compte",
+          d: "Création de sites vitrines pour les entreprises locales, du premier échange à la mise en ligne." },
+        { y: "2026", t: "Ingénieur / Développeur web", o: "CEREMA",
+          d: "Réalisation d'un site web qui repertorie le traffic maritime français complet en live" },
+        { y: "2025", t: "1ère réalisation d'ampleur", o: "MARIN (Pays Bas)",
+          d: "Réalisation d'une interface spécialement pour mobile visant a récolté des informations de navigation depuis les capteurs du smartphone" },
+        { y: "2021", t: "formation", o: "École", d: "ISEN : école des Ingénieur du Numérique ." }
+      ],
+      contact: [
+        { i: "✉", l: "Email", v: "piksel.website@gmail.com", h: "mailto:piksel.website@gmail.com" },
+        { i: "☎", l: "Téléphone", v: "06 49 20 73 66", h: "tel:+33649207366" }
+        // LinkedIn retiré : l'entrée pointait vers "#" et affichait
+        // "linkedin.com/in/…". Un prospect qui clique tombait sur rien,
+        // ce qui coûte plus en crédibilité que l'absence de la ligne.
+        // Pour la remettre, décommente et mets ta vraie adresse :
+        // , { i: "in", l: "LinkedIn", v: "linkedin.com/in/teiva-mettelet",
+        //     h: "https://www.linkedin.com/in/teiva-mettelet/" }
+      ]
+    };
+
+    /* ============================================================
+       RENDU
+       ============================================================ */
+    const $ = (s, p = document) => p.querySelector(s),
+      $$ = (s, p = document) => [...p.querySelectorAll(s)];
+
+    // loader
+    /* Les delais etaient ecrits dans un attribut style="" ; la CSP les
+       bloque desormais. On les applique via l'API .style apres insertion,
+       ce que la CSP autorise (elle ne filtre que le HTML analyse). */
+    $('#loadName').innerHTML = [...CONFIG.marque]
+      .map(c => `<span>${c === ' ' ? '&nbsp;' : c}</span>`).join('');
+    $$('#loadName span').forEach((el, i) => {
+      el.style.animationDelay = `${i * .05 + .25}s`;
+    });
+
+    // logo + textes fixes
+    $('#navLogo').textContent = CONFIG.marque;
+    $('#availTxt').textContent = CONFIG.dispo;
+    $('#availSub').textContent = CONFIG.dispoSub;
+    $('#pitch').textContent = CONFIG.pitch;
+    $('#capNom').textContent = CONFIG.nom;
+    $('#capRole').textContent = `Fondateur de ${CONFIG.marque}`;
+    $('#footL').innerHTML =
+      `<span>© ${new Date().getFullYear()} ${CONFIG.marque} — ${CONFIG.nom}</span>` +
+      `<nav class="foot-legal">
+         <a href="/mentions-legales">Mentions légales</a>
+         <a href="/confidentialite">Confidentialité</a>
+         <a href="/cgv">CGV</a>
+       </nav>`;
+
+    // titre hero : chaque ligne animée
+    $('#heroTitle').innerHTML = CONFIG.titre
+      .map(l => `<span class="line"><span>${l}</span></span>`).join('');
+    $$('#heroTitle .line>span').forEach((el, i) => {
+      el.style.transitionDelay = `${i * .11 + .15}s`;
+    });
+
+
+    // spécifications
+    $('#specRoles').innerHTML = CONFIG.prestations.map(r => `<li>${r}</li>`).join('');
+    $('#specTech').innerHTML = CONFIG.competences.map(t => `<li>${t}</li>`).join('');
+
+    // bio + stats
+    $('#bio').innerHTML = CONFIG.bio.map(p => `<p>${p}</p>`).join('');
+    $('#stats').innerHTML = CONFIG.stats.map(s =>
+      `<div class="stat"><b>${s.n}</b><span>${s.l}</span></div>`
+    ).join('');
+
+    // services
+    const carte = s => `
+      <div class="card rv ${s.hot ? 'hot' : ''}">${s.hot ? '<span class="tag">Conseillé</span>' : ''}
+        <div class="ico">${s.i}</div><h3>${s.t}</h3><p>${s.d}</p>
+        <div class="price">${s.p}<small>${s.u}</small></div>
+        <ul>${s.l.map(x => `<li>${x}</li>`).join('')}</ul>
+      </div>`;
+    $('#svcGrid').innerHTML = CONFIG.services.map(carte).join('');
+    $('#svcExtra').innerHTML = CONFIG.extras.map(carte).join('');
+
+    // projets
+    /* Le cercle du badge n'est pas redessine ici : on va le chercher dans
+       CONFIG.services par son nom. Si l'icone d'une offre change, les tuiles
+       de realisations suivent sans qu'on y pense — et une offre renommee
+       fait disparaitre le badge au lieu d'afficher un cercle faux. */
+    const offreIcone = nom => (CONFIG.services.find(s => s.t === nom) || {}).i || '';
+    const badgeOffre = p => {
+      if (!p.offre) return '';
+      const ico = offreIcone(p.offre);
+      if (!ico) return '';
+      return `<span class="offre" title="Réalisé avec l'offre ${p.offre}">
+                ${ico}<b>${p.offre}</b>
+              </span>`;
+    };
+
+    $('#projGrid').innerHTML = CONFIG.projets.map(p => {
+      const chips = p.c.map(c => `<span class="chip">${c}</span>`).join('');
+
+      // Tuile d'attente : pas de capture d'écran, et elle renvoie
+      // vers le formulaire plutôt que vers un site en ligne.
+      if (p.soon) return `
+        <a href="#contact" class="proj proj-soon rv">
+          <div class="thumb thumb-soon" aria-hidden="true">
+            <svg viewBox="0 0 32 32">
+              <rect class="p" x="4"  y="4"  width="11" height="11" rx="1.4"></rect>
+              <rect class="p" x="17" y="4"  width="11" height="11" rx="1.4"></rect>
+              <rect class="p" x="4"  y="17" width="11" height="11" rx="1.4"></rect>
+              <rect class="p" x="17" y="17" width="11" height="11" rx="1.4"></rect>
+            </svg>
+            <span class="soon-tag">Prochainement</span>
+          </div>
+          <div class="proj-body"><h3>${p.t}</h3><p>${p.d}</p>
+            <div class="chips">${chips}</div>
+            <span class="proj-link">Démarrer un projet</span>
+          </div></a>`;
+
+      // Les captures existent en WebP (~30 Ko) et en PNG (~350 Ko) à la
+      // même taille. Le navigateur prend le WebP, le PNG ne sert que de
+      // filet de sécurité.
+      const visuel = p.img
+        ? `<picture>
+             <source srcset="${p.img.replace(/\.png$/, '.webp')}" type="image/webp">
+             <img src="${p.img}" alt="Aperçu du site ${p.t}" loading="lazy" decoding="async">
+           </picture>`
+        : p.init;
+
+      return `
+      <a href="${p.url}" class="proj rv"${/^https?:/.test(p.url) ? ' target="_blank" rel="noopener"' : ''}>
+        <div class="thumb">${visuel}</div>
+        <div class="proj-body">
+          <div class="proj-head"><h3>${p.t}</h3>${badgeOffre(p)}</div>
+          <p>${p.d}</p>
+          <div class="chips">${chips}</div>
+          <span class="proj-link">Voir le projet</span>
+        </div></a>`;
+    }).join('');
+
+    /* Le degrade de chaque vignette vient de CONFIG.projets ; il est pose
+       apres coup pour la meme raison que les delais ci-dessus. On reparcourt
+       la meme liste dans le meme ordre, tuiles « prochainement » comprises. */
+    $$('#projGrid .proj').forEach((carteEl, i) => {
+      const fond = (CONFIG.projets[i] || {}).g;
+      const vignette = carteEl.querySelector('.thumb');
+      if (fond && vignette && !vignette.classList.contains('thumb-soon')) {
+        vignette.style.background = fond;
+      }
+    });
+
+    // parcours
+    $('#timeline').innerHTML = CONFIG.parcours.map(e => `
+      <div class="ev"><div class="yr">${e.y}</div>
+      <div><h3>${e.t}</h3><div class="org">${e.o}</div><p>${e.d}</p></div></div>`).join('');
+
+    // contact
+    $('#contactInfo').innerHTML = CONFIG.contact.map(c => `
+      <a class="ci" href="${c.h}"${/^https?:/.test(c.h) ? ' target="_blank" rel="noopener"' : ''}>
+        <span><small>${c.l}</small><b>${c.v}</b></span>
+        <span class="go" aria-hidden="true">›</span></a>`).join('');
+
+    /* ---------- loader ---------- */
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        $('#loader').classList.add('done');
+        document.body.classList.remove('loading');
+        // déclencher l'animation du titre
+        $$('#heroTitle .line>span').forEach(s => { s.style.transform = 'translateY(0)';
+          s.style.opacity = '1'; });
+        typeLoop();
+      }, 1500);
+    });
+
+    /* ---------- machine à écrire ---------- */
+    let ri = 0,
+      ci = 0,
+      del = false;
+
+    function typeLoop() {
+      const w = CONFIG.roles[ri],
+        el = $('#typed');
+      el.textContent = del ? w.slice(0, --ci) : w.slice(0, ++ci);
+      let d = del ? 38 : 70;
+      if (!del && ci === w.length) { d = 1900;
+        del = true; } else if (del && ci === 0) { del = false;
+        ri = (ri + 1) % CONFIG.roles.length;
+        d = 280; }
+      setTimeout(typeLoop, d);
+    }
+
+    /* ---------- scroll (barre + onglets) ---------- */
+    const hdr = $('#hdr'),
+      prog = $('#progress');
+    let secs = [],
+      docH = 1,
+      queued = false,
+      lastId = null;
+
+    function measure() {
+      secs = $$('section[id]').map(s => ({ id: s.id, top: s.offsetTop - 140 }));
+      docH = Math.max(1, document.body.scrollHeight - innerHeight);
+    }
+
+    function onScroll() {
+      queued = false;
+      const y = scrollY;
+      hdr.classList.toggle('stuck', y > 40);
+      prog.style.transform = 'scaleX(' + Math.min(1, y / docH) + ')';
+      let id = '';
+      for (const s of secs)
+        if (y >= s.top) id = s.id;
+      if (id !== lastId) {
+        lastId = id;
+        $$('.links a:not(.menu-cta)').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + id));
+        movePill();
+      }
+    }
+
+    /* ---------- pastille liquide de la nav ----------
+       Une seule pastille glisse d'un lien a l'autre. Le trajet se joue en
+       deux temps : d'abord la translation avec un etirement proportionnel a
+       la distance parcourue (la matiere se tend), puis un retour a l'echelle
+       1 sur une courbe a rebond (elle se retasse). Sans ce second temps on
+       obtient un simple deplacement, pas un effet liquide. */
+    const pill = $('#navPill'),
+      linksBar = $('#links'),
+      slowMo = matchMedia('(prefers-reduced-motion:reduce)'),
+      canHover = matchMedia('(hover:hover) and (pointer:fine)');
+    let pillX = null, pillSettle;
+
+    function movePill(target) {
+      if (!pill) return;
+      /* sous 860px la nav devient un calque plein ecran : la pastille est en
+         display:none, tout calcul serait faux. */
+      if (innerWidth <= 860) { pill.classList.remove('show'); pillX = null; return; }
+      const a = target || $('.links a.on:not(.menu-cta)');
+      if (!a) { pill.classList.remove('show'); return; }
+
+      const r = a.getBoundingClientRect(), p = linksBar.getBoundingClientRect();
+      const x = r.left - p.left, w = r.width;
+      const first = pillX === null || !pill.classList.contains('show');
+      const dist = first ? 0 : Math.abs(x - pillX);
+      pillX = x;
+      clearTimeout(pillSettle);
+
+      pill.style.height = r.height + 'px';
+      pill.style.marginTop = (-r.height / 2) + 'px';
+      pill.style.width = w + 'px';
+
+      if (first || slowMo.matches) {
+        /* apparition : on se place sans animer, sinon la pastille traverse
+           la nav depuis le bord gauche au premier affichage. */
+        pill.style.transition = 'none';
+        pill.style.transform = 'translateX(' + x + 'px)';
+        void pill.offsetWidth;
+        pill.style.transition = '';
+        pill.classList.add('show');
+        return;
+      }
+
+      const k = Math.min(.2, dist / (w * 7));   /* etirement plafonne a 20% */
+      pill.style.transitionDuration = '';
+      pill.style.transitionTimingFunction = '';
+      pill.style.transform = 'translateX(' + x + 'px) scale(' + (1 + k) + ',' + (1 - k * .6) + ')';
+      pill.classList.add('show');
+
+      pillSettle = setTimeout(() => {
+        pill.style.transitionDuration = '.52s';
+        pill.style.transitionTimingFunction = 'cubic-bezier(.2,1.5,.35,1)';
+        pill.style.transform = 'translateX(' + x + 'px) scale(1,1)';
+      }, 300);
+    }
+
+    /* la pastille suit aussi le survol, puis revient sur la section courante */
+    if (canHover.matches) {
+      $$('.links a:not(.menu-cta)').forEach(a => {
+        a.addEventListener('mouseenter', () => movePill(a));
+      });
+      linksBar.addEventListener('mouseleave', () => movePill());
+    }
+    addEventListener('resize', () => movePill(), { passive: true });
+    addEventListener('load', () => movePill());
+    addEventListener('scroll', () => { if (!queued) { queued = true;
+        requestAnimationFrame(onScroll) } }, { passive: true });
+    addEventListener('resize', measure, { passive: true });
+    addEventListener('load', measure);
+    measure();
+
+    /* ---------- reveal ---------- */
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        $$('.fl', e.target).forEach(f => setTimeout(() => f.style.width = f.dataset.v + '%', 180));
+        io.unobserve(e.target);
+      }
+    }), { threshold: .14 });
+    $$('.rv').forEach((el, i) => { el.style.transitionDelay = (i % 3) * .08 + 's';
+      io.observe(el); });
+
+    /* ---------- carrousels mobile ---------- */
+    (function() {
+      const mq = matchMedia('(max-width:860px)');
+      ['#svcGrid', '#svcExtra', '#projGrid', '#specGrid'].forEach(sel => {
+        const g = $(sel);
+        if (!g || g.children.length < 2) return;
+        const cartes = [...g.children];
+
+        const dots = document.createElement('div');
+        dots.className = 'dots';
+        cartes.forEach((c, i) => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.setAttribute('aria-label', 'Aller à la carte ' + (i + 1));
+          b.addEventListener('click', () => {
+            g.scrollTo({ left: c.offsetLeft - g.offsetLeft, behavior: 'smooth' });
+          });
+          dots.appendChild(b);
+        });
+        g.after(dots);
+
+        const maj = () => {
+          const x = g.scrollLeft,
+            pas = g.scrollWidth / cartes.length;
+          let i = Math.round(x / pas);
+          if (x >= g.scrollWidth - g.clientWidth - 4) i = cartes.length - 1;
+          i = Math.max(0, Math.min(cartes.length - 1, i));
+          [...dots.children].forEach((b, j) => b.classList.toggle('on', j === i));
+        };
+        let tick = false;
+        g.addEventListener('scroll', () => {
+          if (tick) return;
+          tick = true;
+          requestAnimationFrame(() => { tick = false;
+            maj(); });
+        }, { passive: true });
+        maj();
+
+        new IntersectionObserver((es, obs) => {
+          if (!es[0].isIntersecting) return;
+          if (mq.matches) { cartes.forEach(c => c.classList.add('in'));
+            obs.disconnect(); }
+        }, { threshold: .05 }).observe(g);
+
+        mq.addEventListener('change', e => {
+          g.scrollLeft = 0;
+          if (e.matches) cartes.forEach(c => c.classList.add('in'));
+          maj();
+        });
+      });
+    })();
+
+    /* ---------- menu mobile ---------- */
+    const bg = $('#burger'),
+      lk = $('#links');
+
+    function menu(ouvert) {
+      bg.classList.toggle('x', ouvert);
+      lk.classList.toggle('open', ouvert);
+      document.body.classList.toggle('menu-open', ouvert);
+    }
+    bg.onclick = () => menu(!lk.classList.contains('open'));
+    addEventListener('keydown', e => { if (e.key === 'Escape') menu(false); });
+    $$('.links a').forEach(a => a.onclick = () => menu(false));
+
+    /* ---------- thème ---------- */
+    $('#themeBtn').onclick = () => {
+      const d = document.documentElement.dataset.theme === 'dark';
+      document.documentElement.dataset.theme = d ? '' : 'dark';
+      // Le captcha est un iframe : il ne suit pas nos variables CSS,
+      // il faut le reconstruire pour qu'il change de thème avec la page.
+      window.piksel && window.piksel.refreshCaptchaTheme();
+    };
+
+    /* ---------- constellation canvas ---------- */
+    // `fine` etait declare dans l'ancien bloc curseur, supprime depuis :
+    // la constellation en depend encore pour ne pas tourner sur tactile.
+    const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+    const cv = $('#net');
+    const dark = () => document.documentElement.dataset.theme === 'dark';
+    if (!fine) { cv.style.display = 'none'; } else {
+      const ctx = cv.getContext('2d');
+      let pts = [],
+        W, H, mouse = { x: -9e3, y: -9e3 },
+        visible = true,
+        last = 0;
+
+      function size() {
+        W = cv.width = cv.offsetWidth;
+        H = cv.height = cv.offsetHeight;
+        const n = Math.min(46, Math.floor(W * H / 30000));
+        pts = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .35,
+          vy: (Math.random() - .5) * .35 }));
+      }
+      addEventListener('resize', size, { passive: true });
+      size();
+      $('#hero').addEventListener('mousemove', e => { const r = cv.getBoundingClientRect();
+        mouse.x = e.clientX - r.left;
+        mouse.y = e.clientY - r.top }, { passive: true });
+      $('#hero').addEventListener('mouseleave', () => { mouse.x = mouse.y = -9e3 });
+      new IntersectionObserver(es => { visible = es[0].isIntersecting }).observe($('#hero'));
+
+      (function draw(t) {
+        requestAnimationFrame(draw);
+        if (!visible || t - last < 32) return;
+        last = t;
+        const d1 = dark();
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = d1 ? 'rgba(150,170,255,.6)' : 'rgba(80,70,190,.5)';
+        pts.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > W) p.vx *= -1;
+          if (p.y < 0 || p.y > H) p.vy *= -1;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, 1.4, 0, 7);
+          ctx.fill();
+        });
+        for (let i = 0; i < pts.length; i++)
+          for (let j = i + 1; j < pts.length; j++) {
+            const dx = pts[i].x - pts[j].x,
+              dy = pts[i].y - pts[j].y,
+              d = dx * dx + dy * dy;
+            if (d < 18000) {
+              ctx.beginPath();
+              ctx.moveTo(pts[i].x, pts[i].y);
+              ctx.lineTo(pts[j].x, pts[j].y);
+              ctx.strokeStyle = `rgba(108,92,231,${(d1?.45:.32)-d/46000})`;
+              ctx.lineWidth = .6;
+              ctx.stroke();
+            }
+          }
+        pts.forEach(p => {
+          const dx = p.x - mouse.x,
+            dy = p.y - mouse.y,
+            d = dx * dx + dy * dy;
+          if (d < 32000) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(0,168,212,${(d1?.5:.4)-d/80000})`;
+            ctx.lineWidth = .8;
+            ctx.stroke();
+          }
+        });
+      })();
+    }
+
+    /* ---------- tilt 3D sur les cartes projet ---------- */
+    $$('.proj').forEach(c => {
+      c.addEventListener('mousemove', e => {
+        const r = c.getBoundingClientRect();
+        const rx = ((e.clientY - r.top) / r.height - .5) * -7,
+          ry = ((e.clientX - r.left) / r.width - .5) * 7;
+        c.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-8px)`;
+      });
+      c.addEventListener('mouseleave', () => c.style.transform = '');
+    });
+
+    /* ---------- captcha Turnstile : rendu accordé au thème du site ------- */
+    (() => {
+      let widgetId = null;
+      const host = $('#cfTurnstile');
+      const theme = () => document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+
+      // Un captcha en panne échoue sans rien dire : le widget reste vide et
+      // le visiteur ne comprend pas pourquoi son message ne part pas.
+      // On affiche donc un repli lisible, avec le code d'erreur.
+      const panne = code => {
+        const msg = $('#formMsg');
+        if (!msg) return;
+        console.error('[Turnstile] erreur', code,
+          code === '110200'
+            ? "le domaine n'est pas autorisé : ajoute-le dans Turnstile > Hostname Management"
+            : 'voir developers.cloudflare.com/turnstile > error codes');
+        msg.textContent = 'La vérification anti-robot est indisponible. '
+          + 'Écrivez-moi directement à ' + CONFIG.contact[0].v + '.';
+        msg.className = 'form-msg show err';
+      };
+
+      const renderCaptcha = () => {
+        if (!host || !window.turnstile) return;      // l'API n'est pas encore là
+        if (widgetId !== null) window.turnstile.remove(widgetId);
+        host.innerHTML = '';
+        widgetId = window.turnstile.render(host, {
+          sitekey: host.dataset.sitekey,
+          theme: theme(),
+          language: 'fr',
+          size: 'flexible',           // épouse la largeur du formulaire
+          'error-callback': panne,
+          // Le jeton ne vaut que quelques minutes : on le renouvelle plutôt
+          // que de laisser le visiteur échouer à l'envoi.
+          'expired-callback': () => window.turnstile.reset(widgetId),
+          'timeout-callback': () => window.turnstile.reset(widgetId)
+        });
+      };
+
+      window.piksel = {
+        renderCaptcha,
+        // Le widget est recréé à chaque bascule de thème : on lit le jeton
+        // via l'API plutôt que par un sélecteur, qui viserait un ancien champ.
+        captchaToken: () => {
+          try { return window.turnstile.getResponse(widgetId) || ''; }
+          catch { return ''; }
+        },
+        resetCaptcha: () => {
+          try { window.turnstile.reset(widgetId); } catch {}
+        },
+        // Rejoué après un changement de thème.
+        refreshCaptchaTheme: renderCaptcha
+      };
+
+      renderCaptcha();   // au cas où l'API se serait chargée avant ce script
+    })();
+
+    /* ---------- formulaire (envoi réel + captcha Turnstile) ---------- */
+    (() => {
+      const form = $('#form'),
+        btn = $('#formSubmit'),
+        msg = $('#formMsg'),
+        mailTo = CONFIG.contact[0].v;
+
+      const say = (text, kind) => {
+        msg.textContent = text;
+        msg.className = 'form-msg show' + (kind ? ' ' + kind : '');
+      };
+
+      // Repli si la fonction serveur n'est pas joignable (ouverture du fichier en local, par ex.)
+      const fallbackMailto = (n, em, m) => {
+        location.href =
+          `mailto:${mailTo}?subject=${encodeURIComponent('Demande de site — ' + n)}&body=${encodeURIComponent(m + '\n\n— ' + n + ' (' + em + ')')}`;
+      };
+
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+
+        const name = $('#n').value.trim(),
+          email = $('#e').value.trim(),
+          message = $('#m').value.trim(),
+          company = $('#company').value;
+
+        if (!name || !email || !message) {
+          say('Merci de remplir les trois champs.', 'err');
+          return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+          say('Cette adresse email ne semble pas valide.', 'err');
+          $('#e').focus();
+          return;
+        }
+
+        // jeton du captcha
+        const token = window.piksel.captchaToken();
+        if (!token) {
+          say('Merci de valider le captcha juste au-dessus.', 'err');
+          return;
+        }
+
+        const label = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = 'Envoi en cours…';
+        say('', '');
+
+        try {
+          const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, message, company, token })
+          });
+          const data = await res.json().catch(() => ({}));
+
+          if (res.ok && data.ok) {
+            form.reset();
+            window.piksel.resetCaptcha();
+            say('Message envoyé, merci ! Je vous réponds sous 24 h.', 'ok');
+            btn.textContent = 'Message envoyé ✓';
+            setTimeout(() => { btn.textContent = label; btn.disabled = false; }, 4000);
+            return;
+          }
+
+          window.piksel.resetCaptcha();
+          say(data.error || "L'envoi a échoué. Réessayez dans un instant.", 'err');
+        } catch (err) {
+          say('Connexion impossible — ouverture de votre messagerie…', 'err');
+          fallbackMailto(name, email, message);
+        }
+
+        btn.textContent = label;
+        btn.disabled = false;
+      });
+    })();
+  </script>
+</body>
+</html>

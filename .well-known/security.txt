@@ -1,0 +1,11 @@
+# Signalement d'une faille de securite sur piksel-web.fr.
+# Format decrit par le RFC 9116. Merci de votre aide.
+
+Contact: mailto:piksel.website@gmail.com
+Contact: https://piksel-web.fr/#contact
+Expires: 2027-08-19T00:00:00.000Z
+Preferred-Languages: fr, en
+Canonical: https://piksel-web.fr/.well-known/security.txt
+
+# Politique : signalement de bonne foi bienvenu, sans test destructif ni
+# acces aux donnees d'un tiers. Reponse sous 5 jours ouvres. Pas de prime.

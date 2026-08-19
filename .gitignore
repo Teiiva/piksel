@@ -1,0 +1,14 @@
+# Sauvegardes locales, à supprimer quand tu es sûr de toi.
+# _originaux-projets/ contient les captures en pleine résolution ;
+# les versions servies sont dans projets/.
+_ancienne-photo/
+_originaux-projets/
+
+node_modules/
+.wrangler/
+.dev.vars
+.env
+.env.*
+.DS_Store
+Thumbs.db
+*.log

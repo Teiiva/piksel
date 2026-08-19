@@ -1,0 +1,71 @@
+# En-tetes HTTP ajoutes par Cloudflare Pages a chaque reponse.
+#
+# La ligne Content-Security-Policy est GENEREE : elle contient les empreintes
+# SHA-256 des blocs <script> et <style> inline. Apres toute modification du
+# HTML, relance `node tools/build-headers.mjs`, sinon la page se retrouve
+# bloquee par son propre navigateur.
+
+/*
+  # Force HTTPS pendant 2 ans, sous-domaines compris. Sans cet en-tete, la
+  # toute premiere visite passe en clair et peut etre detournee avant la
+  # redirection. `preload` permet l'inscription sur hstspreload.org, qui
+  # protege meme cette premiere visite — a ne demander qu'une fois le site
+  # stable, car la sortie de la liste prend des mois.
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+  # Genere par tools/build-headers.mjs — ne pas editer a la main.
+  Content-Security-Policy: default-src 'none'; script-src 'self' https://challenges.cloudflare.com 'sha256-Ri60HOY2RnSwe8Xn5Ka+6fCPrNaxEYuKB6t2L/bgrVE=' 'sha256-HoxOajGOrSqFAQmij+/CkyP7sDlfUTwsMmR4Lp094vU=' 'sha256-O0/kaFq0mbMxfbzhavezhkDy9rlN8iVm9WtkAl96arc='; style-src 'self' 'sha256-rbEB4mgToW5jGb5pvipSSJCnu+cN2kdRsBZnoI7qqA8=' 'sha256-VD6JNukdtvGpqlkAZ/j6zxF8vnbtbRf9WHTOJ050VRE='; img-src 'self' data:; font-src 'self'; connect-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; frame-ancestors 'none'; form-action 'self'; base-uri 'none'; object-src 'none'; worker-src 'none'; manifest-src 'self'; upgrade-insecure-requests
+
+  # Empeche le navigateur de "deviner" un type MIME (un .txt interprete en
+  # HTML devient une page executable).
+  X-Content-Type-Options: nosniff
+
+  # Double de frame-ancestors pour les navigateurs anciens.
+  X-Frame-Options: DENY
+
+  # Le referent complet reste entre sites HTTPS de meme origine seulement.
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Aucune API sensible n'est utilisee : on les coupe toutes.
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), interest-cohort=()
+
+  # Isole le contexte de navigation : une page ouverte depuis ce site ne peut
+  # plus manipuler window.opener, et les fuites entre onglets d'origines
+  # differentes sont coupees.
+  Cross-Origin-Opener-Policy: same-origin
+
+  # Cloudflare Pages sert les fichiers statiques avec
+  # `Access-Control-Allow-Origin: *`, ce qui autorise n'importe quel site a
+  # lire nos reponses en JavaScript. Rien ici n'a vocation a etre consomme
+  # par un tiers : on retire l'en-tete.
+  ! Access-Control-Allow-Origin
+
+/api/*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex, nofollow
+
+/docs/*
+  X-Robots-Tag: noindex, nofollow
+
+# Les fichiers versionnes par leur contenu peuvent etre caches indefiniment.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+  Cross-Origin-Resource-Policy: same-origin
+
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+# Image d'apercu des partages : doit rester lisible par les robots des
+# reseaux sociaux, donc pas de restriction cross-origin ici.
+/og.jpg
+  Cache-Control: public, max-age=604800
+
+/.well-known/security.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400

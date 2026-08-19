@@ -1,0 +1,10 @@
+# Le site tient en une page publique et trois pages legales : tout est
+# indexable. On ne liste volontairement aucun chemin en Disallow — un fichier
+# robots.txt est public, et y ecrire "Disallow: /admin" revient a publier la
+# carte de ce qu'on cherche a cacher. Les chemins non publics sont proteges
+# cote serveur (reponse 404 et en-tete X-Robots-Tag), pas par ce fichier.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://piksel-web.fr/sitemap.xml

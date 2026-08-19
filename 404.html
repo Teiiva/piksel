@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page introuvable — Piksel</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d1d1f'/%3E%3Crect x='7' y='7' width='8' height='8' rx='1' fill='%230071e3'/%3E%3Crect x='17' y='7' width='8' height='8' rx='1' fill='%23fff' opacity='.92'/%3E%3Crect x='7' y='17' width='8' height='8' rx='1' fill='%23fff' opacity='.4'/%3E%3Crect x='17' y='17' width='8' height='8' rx='1' fill='%230071e3' opacity='.55'/%3E%3C/svg%3E">
+  <style>
+    /* Police servie par ce serveur, comme sur le reste du site : la page 404
+       ne doit pas etre la seule a envoyer l'IP du visiteur a Google Fonts.
+       Cela permet aussi de garder une CSP sans domaine tiers de style. */
+    @font-face {
+      font-family: 'Inter Tight';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('fonts/inter-tight-latin-400.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+    }
+    @font-face {
+      font-family: 'Inter Tight';
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url('fonts/inter-tight-latin-600.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+    }
+    @font-face {
+      font-family: 'Inter Tight';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url('fonts/inter-tight-latin-700.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+    }
+    :root {
+      --bg: #fff;
+      --txt: #1d1d1f;
+      --txt-dim: #6e6e73;
+      --accent: #0071e3;
+      --line: rgba(28, 34, 54, .14);
+      color-scheme: light;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000;
+        --txt: #f5f5f7;
+        --txt-dim: #86868b;
+        --accent: #2997ff;
+        --line: rgba(255, 255, 255, .16);
+        color-scheme: dark;
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 32px;
+      background: var(--bg);
+      color: var(--txt);
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter Tight', 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.47;
+      letter-spacing: -.012em;
+      text-align: center;
+    }
+    /* Le même halo diffus que sur le site. */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: -15%;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(38% 40% at 20% 12%, rgba(0, 113, 227, .18), transparent 62%),
+        radial-gradient(36% 38% at 80% 82%, rgba(52, 199, 190, .12), transparent 62%);
+      filter: blur(26px);
+    }
+    .mark { width: 44px; height: 44px; margin: 0 auto 26px; display: block; }
+    .mark rect { animation: blip 3.2s ease-in-out infinite; }
+    .mark rect:nth-of-type(2) { animation-delay: .35s; }
+    .mark rect:nth-of-type(3) { animation-delay: .7s; }
+    .mark rect:nth-of-type(4) { animation-delay: 1.05s; }
+    @keyframes blip { 0%, 100% { opacity: 1; } 45% { opacity: .25; } }
+    .code {
+      font-size: .74rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-size: clamp(1.75rem, 6vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -.03em;
+      line-height: 1.1;
+    }
+    p {
+      margin: 14px auto 32px;
+      max-width: 42ch;
+      color: var(--txt-dim);
+    }
+    .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    a {
+      display: inline-flex;
+      align-items: center;
+      padding: 14px 28px;
+      border-radius: 99px;
+      font-size: .95rem;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: opacity .3s, background .3s;
+    }
+    .p { background: var(--accent); color: #fff; }
+    .s { border-color: var(--line); color: var(--txt); }
+    a:hover { opacity: .85; }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true">
+      <rect x="4"  y="4"  width="11" height="11" rx="1.4" fill="var(--accent)"></rect>
+      <rect x="17" y="4"  width="11" height="11" rx="1.4" fill="var(--accent)"></rect>
+      <rect x="4"  y="17" width="11" height="11" rx="1.4" fill="var(--accent)"></rect>
+      <rect x="17" y="17" width="11" height="11" rx="1.4" fill="currentColor" opacity=".9"></rect>
+    </svg>
+    <div class="code">Erreur 404</div>
+    <h1>Cette page n'existe pas</h1>
+    <p>Le lien est peut-être erroné, ou la page a été déplacée. Revenons à l'essentiel.</p>
+    <div class="btns">
+      <a class="p" href="/">Retour à l'accueil</a>
+      <a class="s" href="/#contact">Me contacter</a>
+    </div>
+  </main>
+</body>
+</html>

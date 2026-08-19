@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 96" width="340" height="96" role="img" aria-label="Piksel">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6c5ce7"/>
+      <stop offset="55%" stop-color="#00d4ff"/>
+      <stop offset="100%" stop-color="#ff2e88"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Marque : un pixel agrandi, 4 sous-pixels -->
+  <g transform="translate(16,16)">
+    <rect x="0"  y="0"  width="29" height="29" rx="3" fill="#6c5ce7"/>
+    <rect x="35" y="0"  width="29" height="29" rx="3" fill="#00d4ff"/>
+    <rect x="0"  y="35" width="29" height="29" rx="3" fill="#ff2e88"/>
+    <rect x="35" y="35" width="29" height="29" rx="3" fill="#0d0d14"/>
+  </g>
+
+  <!-- Nom -->
+  <text x="102" y="60"
+        font-family="'Space Grotesk','Poppins','Segoe UI',Arial,sans-serif"
+        font-size="46" font-weight="700" letter-spacing="-1.5" fill="#0d0d14">Piksel</text>
+
+  <!-- Point final coloré -->
+  <rect x="266" y="46" width="11" height="11" rx="2" fill="url(#g)"/>
+</svg>
