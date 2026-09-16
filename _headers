@@ -14,8 +14,7 @@
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
 
   # Genere par tools/build-headers.mjs — ne pas editer a la main.
-  Content-Security-Policy: default-src 'none'; script-src 'self' https://challenges.cloudflare.com 'sha256-Ri60HOY2RnSwe8Xn5Ka+6fCPrNaxEYuKB6t2L/bgrVE=' 'sha256-HoxOajGOrSqFAQmij+/CkyP7sDlfUTwsMmR4Lp094vU=' 'sha256-rjr0lMd9mymtA24SKC7Dw+3jL/mkWhgF3GhnqOEmOgQ='; style-src 'self' 'sha256-rbEB4mgToW5jGb5pvipSSJCnu+cN2kdRsBZnoI7qqA8=' 'sha256-VD6JNukdtvGpqlkAZ/j6zxF8vnbtbRf9WHTOJ050VRE='; img-src 'self' data:; font-src 'self'; connect-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; frame-ancestors 'none'; form-action 'self'; base-uri 'none'; object-src 'none'; worker-src 'none'; manifest-src 'self'; upgrade-insecure-requests
-
+Content-Security-Policy: default-src 'none'; script-src 'self' https://challenges.cloudflare.com 'sha256-Ri60HOY2RnSwe8Xn5Ka+6fCPrNaxEYuKB6t2L/bgrVE=' 'sha256-HoxOajGOrSqFAQmij+/CkyP7sDlfUTwsMmR4Lp094vU=' 'sha256-rjr0lMd9mymtA24SKC7Dw+3jL/mkWhgF3GhnqOEmOgQ=' 'sha256-W1eo9K/rUoXbBaE18ZJMMWKhvKxoWmnChr6TEzF4lNY='; style-src 'self' 'sha256-rbEB4mgToW5jGb5pvipSSJCnu+cN2kdRsBZnoI7qqA8=' 'sha256-VD6JNukdtvGpqlkAZ/j6zxF8vnbtbRf9WHTOJ050VRE='; img-src 'self' data:; font-src 'self'; connect-src 'self' https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; frame-ancestors 'none'; form-action 'self'; base-uri 'none'; object-src 'none'; worker-src 'none'; manifest-src 'self'; upgrade-insecure-requests
   # Empeche le navigateur de "deviner" un type MIME (un .txt interprete en
   # HTML devient une page executable).
   X-Content-Type-Options: nosniff
@@ -33,9 +32,8 @@
   # plus manipuler window.opener, et les fuites entre onglets d'origines
   # differentes sont coupees.
   Cross-Origin-Opener-Policy: same-origin
-
   # Cloudflare Pages sert les fichiers statiques avec
-  # `Access-Control-Allow-Origin: *`, ce qui autorise n'importe quel site a
+  # `Access-Control-Allow-Origin: *`, ce qui autorise n'importe quel site a-
   # lire nos reponses en JavaScript. Rien ici n'a vocation a etre consomme
   # par un tiers : on retire l'en-tete.
   ! Access-Control-Allow-Origin
