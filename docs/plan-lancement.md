@@ -54,9 +54,9 @@ Tes prix actuels dans le site (390 € / 690 € / 25 € par mois) sont volonta
 | **Clients 4 à 10** | 600–900 € | Prix normal du marché pour un site vitrine artisanal bien fait. |
 | **Ensuite** | 1 200 € et + | Quand ton portfolio parle pour toi. |
 
-**Ne descends jamais en dessous de 250 €.** Un site trop peu cher inquiète autant qu'un site trop cher, et attire les clients les plus pénibles.
+**Ne descends jamais en dessous de 490 €.** Un site trop peu cher inquiète autant qu'un site trop cher, et attire les clients les plus pénibles.
 
-**Le revenu qui compte vraiment : la maintenance.** 25 €/mois × 20 clients = 500 €/mois récurrents, sans prospection. Propose-la systématiquement, jamais en option cachée.
+**Le revenu qui compte vraiment : la maintenance.** 29 €/mois × 20 clients = 580 €/mois récurrents, sans prospection. Propose-la systématiquement, jamais en option cachée.
 
 **À facturer en plus :** rédaction des textes (le client ne les fournira jamais à temps — compte 150 €), séance photo, logo.
 
