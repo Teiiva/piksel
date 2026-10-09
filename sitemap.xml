@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  Le site tient en une seule page : ce fichier ne sert donc pas à révéler
-  des URL cachées, mais à donner à Google une adresse de référence et une
-  date de dernière modification. Pense à remettre <lastmod> à jour lors
+  Liste les pages publiques à indexer, avec leur date de dernière
+  modification. Toute nouvelle page de contenu doit être ajoutée ici. Pense à remettre <lastmod> à jour lors
   d'une refonte du contenu.
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://piksel-web.fr/</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://piksel-web.fr/creation-site-internet-brest</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://piksel-web.fr/site-internet-artisan-brest</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://piksel-web.fr/site-internet-commerce-restaurant-brest</loc>
+    <lastmod>2026-10-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://piksel-web.fr/mentions-legales</loc>

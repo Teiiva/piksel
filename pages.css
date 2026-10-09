@@ -1,0 +1,117 @@
+/* ============================================================
+   Compléments pour les pages de contenu (création de site à Brest,
+   artisans, commerces). Se charge APRÈS legal.css, dont il reprend
+   la typographie, les couleurs et l'en-tête.
+   Fichier externe plutôt que <style> inline : la CSP n'a pas besoin
+   d'une nouvelle empreinte à chaque retouche de ces pages.
+   ============================================================ */
+
+.wrap { max-width: 820px; }
+
+/* fil d'Ariane */
+.ariane {
+  font-size: .84rem;
+  color: var(--txt-dim);
+  margin-bottom: 18px;
+}
+.ariane a { color: var(--txt-dim); text-decoration: none; }
+.ariane a:hover { color: var(--accent); }
+
+.chapo {
+  font-size: 1.16rem;
+  color: var(--txt-dim);
+  margin: 14px 0 28px;
+  max-width: 62ch;
+}
+
+/* boutons d'appel à l'action */
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 8px 0 44px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: .96rem;
+  text-decoration: none;
+  border: 1px solid var(--line);
+  color: var(--txt);
+  background: var(--card);
+}
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn-p {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.btn-p:hover { color: #fff; filter: brightness(1.08); }
+
+/* cartes (offres, arguments) */
+.cartes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 18px 0 24px;
+}
+.carte {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px 20px;
+}
+.carte h3 { margin: 0 0 6px; }
+.carte p { margin: 0; font-size: .95rem; color: var(--txt-dim); }
+.carte .prix {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: var(--txt);
+  margin: 4px 0 6px;
+}
+
+/* questions fréquentes */
+details {
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+summary {
+  cursor: pointer;
+  font-weight: 600;
+  list-style-position: outside;
+}
+details p { margin: 10px 0 4px; }
+
+/* encadré final */
+.final {
+  margin-top: 52px;
+  padding: 28px;
+  border-radius: 20px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  text-align: center;
+}
+.final h2 { border: 0; padding: 0; margin: 0 0 10px; }
+.final .cta { justify-content: center; margin: 18px 0 0; }
+
+/* liens vers les pages sœurs */
+.voir-aussi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.voir-aussi li { margin: 0; }
+
+/* quatre arguments : une grille 2 × 2 plutôt que 3 + 1 orpheline */
+.cartes.c2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 560px) {
+  .cartes.c2 { grid-template-columns: 1fr; }
+}
