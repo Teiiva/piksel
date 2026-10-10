@@ -12,3 +12,6 @@ node_modules/
 .DS_Store
 Thumbs.db
 *.log
+
+# Exports PNG du logo (fiche Google, réseaux) — pas servis par le site.
+_logos/
